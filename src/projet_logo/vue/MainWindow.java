@@ -6,6 +6,7 @@
 package projet_logo.vue;
 
 import java.awt.BorderLayout;
+import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -16,10 +17,11 @@ import javax.swing.JPanel;
 public class MainWindow extends JFrame {
     Formulaire formulaires = new Formulaire() ;
     TreeExample trees ;
-    TableDisplay table ;
+    TableDisplay table = new TableDisplay();
             
     private JPanel menuDroite;
     private JFrame windows;
+    private ResultSet Result;
     
     public void Window() {
         
@@ -31,9 +33,9 @@ public class MainWindow extends JFrame {
     menuDroite = new JPanel();
     menuDroite.setLayout(new BorderLayout());
     menuDroite.add(formulaires.InterfaceEleve() , BorderLayout.NORTH);
-    menuDroite.add(table = new TableDisplay() , BorderLayout.SOUTH);
+    menuDroite.add(table.createTable()  , BorderLayout.SOUTH);
     
-    windows.add(trees = new TreeExample(), BorderLayout.WEST);
+    windows.add(trees = new TreeExample(Result), BorderLayout.WEST);
     windows.add(menuDroite, BorderLayout.EAST);
     windows.setVisible(true);
     windows.pack();

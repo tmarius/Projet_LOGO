@@ -1,5 +1,6 @@
 package projet_logo.vue;
 
+import java.sql.ResultSet;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
@@ -22,7 +23,7 @@ import javax.swing.tree.DefaultTreeModel;
         model.reload(root);        
         }    
         
-    public TreeExample()
+    public TreeExample(ResultSet Info)
     {
         //créer le noeud racine
         DefaultMutableTreeNode école = new DefaultMutableTreeNode("Ecole Poitiers");
