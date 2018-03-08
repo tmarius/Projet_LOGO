@@ -32,7 +32,8 @@ public class Projet_LOGO {
     Windows.Window();
     Requete R = new Requete(); 
     ResultSet ResultatRequete;
-    
+    ResultatRequete = R.NvtRequete("select * from nom");
+    R.Remplir_tableau(ResultatRequete);
     
     
     }

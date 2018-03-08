@@ -1,6 +1,7 @@
 package projet_logo.vue;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
@@ -23,10 +24,15 @@ import javax.swing.tree.DefaultTreeModel;
         model.reload(root);        
         }    
         
-    public TreeExample(ResultSet Info)
+    public TreeExample(ResultSet ResultatRequete)
     {
-        //créer le noeud racine
-        DefaultMutableTreeNode école = new DefaultMutableTreeNode("Ecole Poitiers");
+        
+            
+            try {
+                
+                
+                 //créer le noeud racine
+        DefaultMutableTreeNode école = new DefaultMutableTreeNode(ResultatRequete.getString("prenom"));
         //créer les noeuds fils
         DefaultMutableTreeNode classe1 = new DefaultMutableTreeNode("Classe Bio");
         //ajouter des sous noeuds au noeud fils
@@ -50,6 +56,32 @@ import javax.swing.tree.DefaultTreeModel;
         tree.setRootVisible(true);
         //créer la barre déroulante
         add(new JScrollPane(tree));
+                
+                
+                
+                
+                
+                
+                
+                while (ResultatRequete.next())
+                {
+                    int idR = ResultatRequete.getInt("id");
+                    String nameR = ResultatRequete.getString("name");
+                    String prenomR = ResultatRequete.getString("prenom");
+                    System.out.println(idR + "\t" +nameR + "\t" +prenomR);
+                
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                //    return(null);
+            }
+
+            
+        
+        
+        
+        
+       
         
         
 

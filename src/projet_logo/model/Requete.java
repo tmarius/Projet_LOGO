@@ -48,7 +48,7 @@ public class Requete {
         public void Remplir_tableau(ResultSet ResultatRequete) 
         {
         
-            ResultatRequete = NvtRequete("select * from nom");
+            
             try {
                 while (ResultatRequete.next())
                 {
