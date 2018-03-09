@@ -2,8 +2,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import projet_logo.model.MainModel;
 import static projet_logo.model.SQLiteJDBCDriverConnection.connect;
 import projet_logo.model.Requete;
+import projet_logo.model.eleve;
 import projet_logo.vue.Formulaire;
 import projet_logo.vue.MainWindow;
 import projet_logo.vue.TreeExample;
@@ -20,10 +23,17 @@ import projet_logo.vue.TreeExample;
  */
 public class Projet_LOGO {
 
+     
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+    ArrayList<eleve> eleves;
+    eleves = new ArrayList<>();
+    MainModel datas;
+    datas = new MainModel();
+        
         // TODO code application logic here
     //Formulaire formulaires = new Formulaire();
     //formulaires.InterfaceEleve();
@@ -35,7 +45,12 @@ public class Projet_LOGO {
     ResultatRequete = R.NvtRequete("select * from nom");
     R.Remplir_tableau(ResultatRequete);
     
+    datas.retrieveData();
+    eleves = datas.getListeEleve();
     
+     // retrieving data from string list array in for loop
+   
+    System.out.println( eleves.get(0).getNom());
     }
     
 }
