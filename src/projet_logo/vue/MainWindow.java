@@ -7,9 +7,12 @@ package projet_logo.vue;
 
 import java.awt.BorderLayout;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import projet_logo.model.Classe;
 import projet_logo.model.Requete;
+import projet_logo.model.eleve;
 
 /**
  *
@@ -25,7 +28,7 @@ public class MainWindow extends JFrame {
     private ResultSet Result;
     Requete R = new Requete();
     
-    public void Window() {
+    public void RefreshW(Classe classe1) {
         
     windows = new JFrame("Projet_LOGO");
     
@@ -37,7 +40,7 @@ public class MainWindow extends JFrame {
     menuDroite.add(formulaires.InterfaceEleve() , BorderLayout.NORTH);
     menuDroite.add(table.createTable() , BorderLayout.SOUTH);
     Result = R.NvtRequete("select * from nom");
-    windows.add(trees = new TreeExample(Result), BorderLayout.WEST);
+    windows.add(trees = new TreeExample(classe1), BorderLayout.WEST);
     windows.add(menuDroite, BorderLayout.EAST);
     windows.setVisible(true);
     windows.pack();

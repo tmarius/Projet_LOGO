@@ -19,7 +19,7 @@ public class eleve {
     public eleve(int id, String nom, String prenom) {
         this.id = id;
         this.nom = nom;
-        //this.prenom = prenom;
+        this.prenom = prenom;
         //this.age = age;
         //this.refClasse = refClasse;
     }

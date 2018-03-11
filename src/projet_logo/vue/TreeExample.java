@@ -2,16 +2,19 @@ package projet_logo.vue;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import projet_logo.model.Classe;
+import projet_logo.model.eleve;
 
 
 
-   
+
     
     public class TreeExample extends JPanel
 {
@@ -24,21 +27,25 @@ import javax.swing.tree.DefaultTreeModel;
         model.reload(root);        
         }    
         
-    public TreeExample(ResultSet ResultatRequete)
+    public TreeExample(Classe classe1bdd)
     {
         
             
-            try {
+      
                 
                 
                  //créer le noeud racine
-        DefaultMutableTreeNode école = new DefaultMutableTreeNode(ResultatRequete.getString("prenom"));
+        DefaultMutableTreeNode école = new DefaultMutableTreeNode("School");
         //créer les noeuds fils
-        DefaultMutableTreeNode classe1 = new DefaultMutableTreeNode("Classe Bio");
-        //ajouter des sous noeuds au noeud fils
-        classe1.add(new DefaultMutableTreeNode("élève1"));
-        classe1.add(new DefaultMutableTreeNode("élève2"));
-        classe1.add(new DefaultMutableTreeNode("élève3"));
+        DefaultMutableTreeNode classe1 = new DefaultMutableTreeNode(classe1bdd.getClasse());
+            //ajouter des sous noeuds au noeud fils
+            classe1bdd.getEleves().forEach((unEleve) -> {
+                classe1.add(new DefaultMutableTreeNode(unEleve.getPrenom()));
+            });
+        
+       // classe1.add(new DefaultMutableTreeNode("élève1"));
+       // classe1.add(new DefaultMutableTreeNode("élève2"));
+       // classe1.add(new DefaultMutableTreeNode("élève3"));
         DefaultMutableTreeNode classe2 = new DefaultMutableTreeNode("Classe Info");
         //ajouter des sous noeuds au noeud fils
         classe2.add(new DefaultMutableTreeNode("élève4"));
@@ -63,18 +70,6 @@ import javax.swing.tree.DefaultTreeModel;
                 
                 
                 
-                while (ResultatRequete.next())
-                {
-                    int idR = ResultatRequete.getInt("id");
-                    String nameR = ResultatRequete.getString("name");
-                    String prenomR = ResultatRequete.getString("prenom");
-                    System.out.println(idR + "\t" +nameR + "\t" +prenomR);
-                
-                }
-            } catch (SQLException e) {
-                System.out.println(e.getMessage());
-                //    return(null);
-            }
 
             
         

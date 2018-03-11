@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Cette classe permet de récupérer les données de la base de donnée et de entrer
+ * leur donner dans leur classe respective.
  */
 package projet_logo.model;
 
@@ -14,44 +13,39 @@ import java.util.ArrayList;
  * @author Thomas
  */
 public class MainModel {
-    private ArrayList<eleve> ListeEleve;
+    private Classe classe1;
     
     /**
-     *
+     * Recupere les données via leur requete, les stocks dans result et ouvre le resultat
+     * dans une boucle en fonction du nombre de resultat pour permettre la creation des classes.
      */
-    public void retrieveData()
+    public void RetrieveBdd()
     {
-    ListeEleve = new ArrayList<>();     
-    Requete RequeteEleve = new Requete();
-    ResultSet Result;
-    Result = RequeteEleve.NvtRequete("select * from nom");
-    eleve leseleves;
+       
+    eleve leseleves; //Declaration de l'object eleve.    
+    classe1 = new Classe(1,"Classe1",2); //Declaration de l'object classe.        
+    Requete RequeteEleve = new Requete(); //Declaration de l'objet requete. L'implementation permet de faire la connexion a la bdd
+    ResultSet Result; //Declation de l'object permettant de recuperer les resultats.
+    Result = RequeteEleve.NvtRequete("select * from nom"); //Lance la requete en string via la connexion requete et est recupere dans l object resultat.
+    
     try {
-                while (Result.next())
+                while (Result.next()) //Boucle temps que l'object n est pas vide
                 {
                     leseleves = new eleve(Result.getInt("id"), Result.getString("name"),
-                    Result.getString("prenom"));
-                    ListeEleve.add(leseleves);
-                        
+                    Result.getString("prenom"));  //Cree un eleve avec les information de la bdd (sur une itinerance i de la boucle)
+                    classe1.ajoutEleves(leseleves);  //Ajoute l'eleve dans la liste d'eleve dans la classe                              
 //                    eleve.setSexe()=ResultatRequete.getBoolean("sexe");
 //                    eleve.setAge()=ResultatRequete.getInt("id");
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
-                
+                //Si la connexion echoue
             }        
     }
-    
-   
 
- //    eleve.setId() = ResultatRequete.getInt("id");
-//                    eleve.setNom() = ResultatRequete.getString("name");
-//                    eleve.setPrenom() = ResultatRequete.getString("prenom");
-//                    eleve.setSexe()=ResultatRequete.getBoolean("sexe");
-//                    eleve.setAge()=ResultatRequete.getInt("id");
-
-    public ArrayList<eleve> getListeEleve() {
-        return ListeEleve;
+    public Classe getClasse1() {
+        return classe1;
     }
+    
 
 }
