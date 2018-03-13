@@ -8,15 +8,18 @@ package projet_logo.model;
 import java.util.ArrayList;
 
 /**
- *
- * @author Thomas
+ * Cette classe va contenir la liste des eleves ainsi que l'id du proffesseur
+ *@param int idClasse id généré par la base de donnée
+ * String Classe 
+ * int idProf
+ * 
  */
 public class Classe {
     
     private int idClasse;
     private String Classe;
     private int idProf;
-    private ArrayList<eleve> eleves;
+    private ArrayList<eleve> eleves;//contient la liste des eleves de la classe
 
     public Classe(int idClasse, String Classe, int idProf) {
         this.idClasse = idClasse;
