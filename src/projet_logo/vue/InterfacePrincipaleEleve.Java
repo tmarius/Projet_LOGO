@@ -1,5 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+/**
+ * Classe InterfacePrincEleve est une classe qui permet d'afficher la vue principale
+ * dans cette interface, on a quatre différentes parties, une avec des boutons pour gérer la tortue
+ * une avec le modèle du dessin qu'il doit réaliser
+ * une avec le dessin en cours de réalisation, et la tortue qui bouge
+ * une avec le code qui s'affiche au fur et à mesure, synchronisé avec le dessin
+ */
 
 public class InterfacePrincEleve {
 
@@ -113,7 +120,6 @@ public class InterfacePrincEleve {
         //menu image
         ImageIcon modèleImage = new ImageIcon("C:/Users/morgane/Documents/Cours/Master/S1/OOP-OOD/projets cours/interactive counter/images interface/tortue.PNG");
         //ImageIcon modèleImage = new ImageIcon(new ImageIcon("C:/Users/morgane/Documents/Cours/Master/S1/OOP-OOD/projets cours/interactive counter/images interface/tortue.PNG").getImage().getScaledInstance(600, 600, Image.SCALE_DEFAULT));
-        //modèleImage.setPreferredSize();
         JLabel modèle = new JLabel("Modèle à reproduire");
         modèle.setVerticalTextPosition(JLabel.BOTTOM);
         modèle.setHorizontalTextPosition(JLabel.CENTER);        
@@ -145,7 +151,7 @@ public class InterfacePrincEleve {
         mainPanel.add(moyenPanel, BorderLayout.CENTER);
         
         frame.add(mainPanel);
-        frame.setExtendedState(frame.MAXIMIZED_BOTH);
+        frame.setExtendedState(frame.MAXIMIZED_BOTH); //permet de mettre l'appli en plein écran
         frame.pack();
         frame.setResizable(false);
         frame.setVisible(true);
