@@ -9,60 +9,32 @@ package projet_logo.model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.*;
 /**
- *
- * @author 
+ * Classe SQLiteJDBCDriverConnection
+ * Permet de tester la connexion à SQLite Studio, après avoir spécifié l'url permettant d'aller jusqu'à la base de données.
+ * Crée un objet Connection conn, permettant de se connecter à la base de données.
+ * Si la connection a lieu, affiche un message à l'utilisateur, disant que la connection à SQLite Studio a été établie.
+ * Sinon, renvoie un message d'erreur.
+ * Dans tous les cas, renvoie l'objet Connection.
  */
+
 public class SQLiteJDBCDriverConnection {
-    //private Connection conn;
-    //Request req;
      /**
-     * Connect to a sample database
+     * Connection à une BDD, en spécifiant l'url.
      */
     public static Connection connect() {
-        Connection conn = null;
+        Connection conn = null; //Création 
         try {
             // db parameters
-            String url = "jdbc:sqlite:C:/Users/Lucas/Documents/MASTER_GPhy/Master 1/SecondSemestre/IHM/BDD/test2.db";
+            String url = "jdbc:sqlite:C:/sqlitestudio-3.1.1/SQLiteStudio/bddtest2.db"; //url permettant de se connecter à la BDD.
             // create a connection to the database
-            conn = DriverManager.getConnection(url);
+            conn = DriverManager.getConnection(url); //Connection à la BDD, en passant par l'url
             
             System.out.println("Connection to SQLite has been established.");
             
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        } catch (SQLException e) { //Si la connection n'a pas été établit, catch une erreur
+            System.out.println(e.getMessage()); //Affiche un message d'erreur
         }
         return(conn);
     }
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String[] args) 
-//    {
-//        Connection recon = connect();
-//        
-//        Statement stmt = null; 
-//        //String ss=req.requestFunction();
-//        String sql;
-//        sql = "select * from nom";
-//        //String sql = "select idEleve from Eleve";
-//        try
-//        {
-//            stmt = recon.createStatement();
-//
-//            ResultSet rs = stmt.executeQuery(sql);
-//            while (rs.next()) 
-//            {
-//                int idR = rs.getInt("id");
-//                String nameR = rs.getString("name");
-//                String prenomR = rs.getString("prenom");
-//                System.out.println(idR + "\t" +nameR + "\t" +prenomR);
-//            }
-//        } 
-//        catch (SQLException e) 
-//        {
-//            System.out.println(e.getMessage());
-//        }
-//    }
 }
