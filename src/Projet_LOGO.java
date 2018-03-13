@@ -2,7 +2,6 @@
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import projet_logo.model.MainModel;
-import projet_logo.model.Requete;
 import projet_logo.model.eleve;
 import projet_logo.vue.MainWindow;
 
