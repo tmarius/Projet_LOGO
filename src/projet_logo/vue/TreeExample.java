@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import projet_logo.model.Classe;
-import projet_logo.model.eleve;
+import projet_logo.model.Eleve;
 
 
 
@@ -65,20 +65,7 @@ import projet_logo.model.eleve;
         //créer la barre déroulante
         add(new JScrollPane(tree));
                 
-                
-                
-                
-                
-                
-                
-
-            
-        
-        
-        
-        
-       
-        
+                  
         
 
         

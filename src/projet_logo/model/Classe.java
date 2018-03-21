@@ -19,7 +19,7 @@ public class Classe {
     private int idClasse;
     private String Classe;
     private int idProf;
-    private ArrayList<eleve> eleves;//contient la liste des eleves de la classe
+    private ArrayList<Eleve> eleves;//contient la liste des eleves de la classe
 
     public Classe(int idClasse, String Classe, int idProf) {
         this.idClasse = idClasse;
@@ -54,14 +54,14 @@ public class Classe {
         this.idProf = idProf;
     }
 
-    public ArrayList<eleve> getEleves() {
+    public ArrayList<Eleve> getEleves() {
         return eleves;
     }
 
-    public void setEleves(ArrayList<eleve> eleves) {
+    public void setEleves(ArrayList<Eleve> eleves) {
         this.eleves = eleves;
     }
     
-    public void ajoutEleves(eleve unEleve)
+    public void ajoutEleves(Eleve unEleve)
     { eleves.add(unEleve);    }
 }

@@ -52,7 +52,7 @@ public class MainModel {
     public void RetrieveBdd()
     {
        
-    eleve leseleves; //Declaration de l'object eleve.    
+    Eleve leseleves; //Declaration de l'object eleve.    
     classe1 = new Classe(1,"Classe1",2); //Declaration de l'object classe.        
     ResultSet Result; //Declation de l'object permettant de recuperer les resultats.
     Result = NvtRequete("select * from Eleve"); //Lance la requete en string via la connexion requete et est recupere dans l object resultat.
@@ -60,7 +60,7 @@ public class MainModel {
     try {
                 while (Result.next()) //Boucle temps que l'object n est pas vide
                 {
-                    leseleves = new eleve(Result.getInt("idEleve"), Result.getString("nom"),
+                    leseleves = new Eleve(Result.getInt("idEleve"), Result.getString("nom"),
                     Result.getString("prenom"));  //Cree un eleve avec les information de la bdd (sur une itinerance i de la boucle)
                     classe1.ajoutEleves(leseleves);  //Ajoute l'eleve dans la liste d'eleve dans la classe                              
 //                    eleve.setSexe()=ResultatRequete.getBoolean("sexe");
