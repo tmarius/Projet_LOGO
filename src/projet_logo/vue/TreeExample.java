@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import projet_logo.model.Classe;
-import projet_logo.model.eleve;
+import projet_logo.model.Eleve;
 
 
 
@@ -39,9 +39,9 @@ import projet_logo.model.eleve;
         //créer les noeuds fils
         DefaultMutableTreeNode classe1 = new DefaultMutableTreeNode(classe1bdd.getClasse());
             //ajouter des sous noeuds au noeud fils
-            classe1bdd.getEleves().forEach((unEleve) -> {
-                classe1.add(new DefaultMutableTreeNode(unEleve.getPrenom()));
-            });
+            //classe1bdd.getEleves().forEach((unEleve) -> {
+                //classe1.add(new DefaultMutableTreeNode(unEleve.getPrenom()));
+            //});
         
        // classe1.add(new DefaultMutableTreeNode("élève1"));
        // classe1.add(new DefaultMutableTreeNode("élève2"));
@@ -64,20 +64,7 @@ import projet_logo.model.eleve;
         //créer la barre déroulante
         add(new JScrollPane(tree));
                 
-                
-                
-                
-                
-                
-                
-
-            
-        
-        
-        
-        
-       
-        
+                  
         
 
         

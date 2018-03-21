@@ -1,8 +1,10 @@
+package projet_logo;
 
-import java.sql.ResultSet;
+
+//import java.sql.ResultSet;
 import java.util.ArrayList;
-import projet_logo.model.MainModel;
-import projet_logo.model.eleve;
+//import projet_logo.model.MainModel;
+import projet_logo.model.Eleve;
 import projet_logo.vue.MainWindow;
 
 
@@ -18,18 +20,18 @@ public class Projet_LOGO {
      */
     public static void main(String[] args) {
     //Declaration    
-    ArrayList<eleve> eleves;
+    ArrayList<Eleve> eleves;
     eleves = new ArrayList<>();
-    MainModel datas;
+    //MainModel datas;
     
     
-    datas = new MainModel(); 
+    //datas = new MainModel(); 
      // Le mettre en static ? 
-    datas.RetrieveBdd(); // Permet de charger la bdd dans des classes
+    //datas.RetrieveBdd(); // Permet de charger la bdd dans des classes
      
-    MainWindow Windows = new MainWindow(); 
-    Windows.RefreshW(datas.getClasse1()); // Appel les elements graphiques. La windows.
-    
+    MainWindow window = new MainWindow(); 
+    //Windows.RefreshW(datas.getClasse1()); // Appel les elements graphiques. La windows.
+    //window.RefreshW();
     
     //Requete R = new Requete(); 
     //ResultSet ResultatRequete;
