@@ -27,7 +27,7 @@ public class MainWindow extends JFrame {
     public MainWindow(){
         
     windows = new JFrame("Projet_LOGO"); //on construit la frame
-    windows.add(interfaceOuverture()); //on commence par la première interface
+    windows.add(interfaceVisuExo()); //on commence par la première interface
     windows.setVisible(true);
     windows.pack();
     windows.setExtendedState(windows.MAXIMIZED_BOTH);
@@ -109,10 +109,18 @@ public class MainWindow extends JFrame {
         JPanel ic = new JPanel();
         
         JPanel mainIc = new JPanel();
+        JPanel l4 = new JPanel();
+        
+        //ajout espace à droite 
+        JLabel l5 = new JLabel();
+        l5.setPreferredSize(new Dimension(150,60));
+        
         //ajout borderLayout
+        ic.setLayout(new BorderLayout());
         mainIc.setLayout(new BorderLayout());
+        l4.setLayout(new BorderLayout());
         //ajout GridLayout 4 lignes et 2 colonnes
-        JPanel menuCentre = new JPanel(new GridLayout(4,2));
+        JPanel menuCentre = new JPanel(new GridLayout(4,3));
         //ajout du GridLayout au centre du BorderLayout
         mainIc.add(menuCentre,BorderLayout.CENTER);
         
@@ -125,8 +133,9 @@ public class MainWindow extends JFrame {
         
         //définition d'une couleur de fond
         menuCentre.setBackground(Color.white);
-        
+        l4.setBackground(Color.white);
         ic.setBackground(Color.white);
+        mainIc.setBackground(Color.white);
         
         //adding the labels and text area
         JLabel l1 = new JLabel("Nom :");
@@ -171,8 +180,19 @@ public class MainWindow extends JFrame {
         b.setFont(new Font("Arial",Font.BOLD,30));
         //placer le bouton au sud
         mainIc.add(b,BorderLayout.SOUTH);
-        //couleur de fon blanc pour le bouton
-
+        
+        //ajout bouton retour
+        JButton retour = new JButton("Retour");
+        l4.add(retour);
+        //changement de taille du bouton
+        retour.setPreferredSize(new Dimension(150,60));
+        //changement de taille de la police du bouton
+        retour.setFont(new Font("Arial",Font.BOLD,30));
+        //placer le bouton au nord
+        l4.add(retour,BorderLayout.NORTH);
+        
+        ic.add(l5,BorderLayout.EAST);
+        ic.add(l4,BorderLayout.WEST);
         ic.add(mainIc);
         
         //ajout du listener sur le bouton démarrer
@@ -180,6 +200,14 @@ public class MainWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 refreshW(interfacePrincEleve());
+            }
+        });
+        
+        //ajout du listener sur le bouton retour
+        retour.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+
+                refreshW(interfaceOuverture());
             }
         });
         
@@ -356,8 +384,103 @@ public class MainWindow extends JFrame {
      * il visualise le dessin, le code, et a des boutons pour pouvoir diriger la tortue, elle ressemble à l'interface principale de l'élève avec des boutons de création en plus
      */
     
-    public void interfaceCreaExo(){
+    public JPanel interfaceCreaExo(){
         
+    JPanel mainPanel; //déclaration des panels utilisés pour cette fenêtre
+    JPanel panelGauche;
+    
+        //panel principal
+        BorderLayout layout = new BorderLayout();
+        mainPanel = new JPanel(layout);        
+        panelGauche = new JPanel(new GridLayout(2,0));
+
+        //menu pour interagir avec la tortue, qui se trouve dans le menu droite 
+        JPanel panelInteract = new JPanel(new GridLayout(4,3));
+        panelInteract.add(new JLabel(" "));
+        
+        ImageIcon haut = new ImageIcon(getClass().getResource("/projet_logo/images/flechehaut-ConvertImage.jpg"));
+        JButton bhaut = new JButton(haut);
+        bhaut.setBackground(Color.WHITE);
+        panelInteract.add(bhaut);
+        
+        panelInteract.add(new JLabel(" "));
+        
+        ImageIcon gauche = new ImageIcon(getClass().getResource("/projet_logo/images/flechegauche-ConvertImage.JPG"));
+        JButton bgauche = new JButton(gauche);
+        bgauche.setBackground(Color.WHITE);
+        panelInteract.add(bgauche);
+        
+        panelInteract.add(new JButton("AVANCER"));
+        
+        ImageIcon droite = new ImageIcon(getClass().getResource("/projet_logo/images/flechedroite-ConvertImage.JPG"));        
+        JButton bdroite = new JButton(droite);
+        bdroite.setBackground(Color.WHITE);
+        panelInteract.add(bdroite);
+        
+        panelInteract.add(new JLabel(" "));
+        
+        ImageIcon bas = new ImageIcon(getClass().getResource("/projet_logo/images/flechebas-ConvertImage.JPG"));        
+        JButton bbas = new JButton(bas);
+        bbas.setBackground(Color.WHITE);
+        panelInteract.add(bbas);
+        
+        panelInteract.add(new JLabel(" "));
+        
+        panelInteract.add(new JLabel("Vitesse de la tortue : "+2)); //changer le chiffre avec la vitesse effective de la tortue
+        //deux boutons + et - dans une seule case du grid
+        JPanel setVitesse = new JPanel(new GridLayout(2,0));
+        setVitesse.add(new JButton("+"));
+        //setVitesse.add(new JLabel(" "));
+        setVitesse.add(new JButton("-"));
+        panelInteract.add(setVitesse);
+
+        //pop up pour choisir la couleur d'écriture de la tortue
+        JButton choixCouleur = new JButton("Couleur");
+        JOptionPane popup = new JOptionPane("mettre pop up pour couleur");
+
+        //menu de gauche
+        JPanel panelMenu = new JPanel(new GridLayout(9,0));
+        panelMenu.add(new JLabel(" "));
+        panelMenu.add(new JButton("COMMENCER"));
+        panelMenu.add(new 
+            JButton("UNDO"));
+        panelMenu.add(new 
+            JButton("REDO"));
+        panelMenu.add(new 
+            JButton("EFFACER"));
+        panelMenu.add(new JLabel(" "));
+        panelMenu.add(new 
+            JButton("SAUVEGARDER"));
+        panelMenu.add(new JButton("CRITERES"));
+        panelMenu.add(new JButton("RETOUR"));
+        
+        //on met les panels en place
+        panelGauche.add(panelMenu);
+        mainPanel.add(panelGauche, BorderLayout.WEST);
+        
+        //banière du dessus
+        JPanel baniere = new JPanel(new GridLayout(0,2));
+        baniere.add(new JLabel("Créer Exercice"));
+        baniere.add(new JLabel("Nom Exercice"));
+        mainPanel.add(baniere, BorderLayout.NORTH);
+        
+        //menu du milieu
+        JPanel milieu = new JPanel(new GridLayout(2,2));
+        milieu.add(new JLabel(new ImageIcon(getClass().getResource("/projet_logo/images/tortue_connexion.png")))); //ajouter des trucs de la bdd
+        milieu.add(new JTextField("CODE"));
+        milieu.add(panelInteract);
+        
+        JPanel buttons = new JPanel(new GridLayout(3,0));
+        buttons.add(new JButton("Créer Tortue"));
+        buttons.add(new JButton("Créer Tortue Rapide"));
+        buttons.add(new JButton("Créer Tortue Couleur"));
+        milieu.add(buttons);
+        
+        
+        mainPanel.add(milieu, BorderLayout.CENTER);
+       return mainPanel;
+        
+               
     }
     
     /**
@@ -401,17 +524,48 @@ public class MainWindow extends JFrame {
     public void eleveTenta(){
         
     }
-    
-    /**
-     * méthode interfacePrincProf affiche une fenetre ou le prof peut visualiser la liste des classes et accéder aux élèves, à la liste des exercices, et à l'interface de création d'exercice
-     */
-    
-    public void interfacePrincProf(){
+    public JPanel interfacePrincProf(){
         
+        JPanel panelGauche = new JPanel(new GridLayout(4,0));
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        
+        //création des arbres
+        TreeExo arbre = new TreeExo();
+        TreeExo arbre2 = new TreeExo();
+        
+        //création des boutons
+        JButton creer = new JButton("Créer Exercice");
+        JButton modif = new JButton("Modifier Exercice");
+        
+        panelGauche.add(creer);
+        panelGauche.add(modif);
+        panelGauche.add(arbre);
+        panelGauche.add(arbre2);
+        mainPanel.add(panelGauche, BorderLayout.WEST);
+        
+        return mainPanel;
     }
     
     /**
      * méthode interfacevisuExo crée une fenêtre à partir de laquelle leprof pourra visualiser les exercices qu'il a déja créé
      * sur la gauche on a la liste des exercices et sur la droite on peut voir le dessin et le code voulu, ainsi que les critères d'évaluation pour chaque statut
      */
+    public JPanel interfaceVisuExo(){
+       JPanel mainPanel = new JPanel(new BorderLayout());
+       
+       TreeExo arbre = new TreeExo();
+       mainPanel.add(arbre, BorderLayout.WEST);
+       
+       mainPanel.add(new JLabel("Nom Exercice"), BorderLayout.NORTH);
+       
+       JPanel centre = new JPanel(new GridLayout(2,0));
+       JPanel centreHaut = new JPanel();
+       centreHaut.add(new JLabel(new ImageIcon(getClass().getResource("/projet_logo/images/tortue_connexion.png"))));
+       centreHaut.add(new JTextField("CODE QUI REJOUE"));
+       
+       centre.add(centreHaut);
+       centre.add(new JTextArea("Critères d'évaluation :"));
+       mainPanel.add(centre, BorderLayout.CENTER);
+       return mainPanel;
+    }
 }
