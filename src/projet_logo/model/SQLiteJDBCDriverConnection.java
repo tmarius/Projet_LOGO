@@ -26,7 +26,11 @@ public class SQLiteJDBCDriverConnection {
         Connection conn = null; //Création 
         try {
             // db parameters
-            String url = "jdbc:sqlite:C:/sqlitestudio-3.1.1/SQLiteStudio/bddtest2.db"; //url permettant de se connecter à la BDD.
+            String path = System.getProperty("user.dir" );       
+            String fullpath = path + "/src/projet_logo/testbdd.db";
+            System.out.println(fullpath);
+            String url = "jdbc:sqlite:" + fullpath;
+           // String url = "jdbc:sqlite:/src/projet_logo/testbdd.db"; //url permettant de se connecter à la BDD.
             // create a connection to the database
             conn = DriverManager.getConnection(url); //Connection à la BDD, en passant par l'url
             

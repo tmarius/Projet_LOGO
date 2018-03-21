@@ -15,10 +15,13 @@ import projet_logo.model.eleve;
 
 
 
-    
+    /**
+     * Classe permettant la création de Jtree
+     */
     public class TreeExample extends JPanel
 {
         private JTree tree;
+    
         
     public void addSelectedItems() {
         DefaultTreeModel model = (DefaultTreeModel)tree.getModel();
@@ -26,7 +29,8 @@ import projet_logo.model.eleve;
         root.add(new DefaultMutableTreeNode("another_child"));
         model.reload(root);        
         }    
-        
+    
+    
     public TreeExample(Classe classe1bdd)
     {
         
@@ -42,10 +46,7 @@ import projet_logo.model.eleve;
             classe1bdd.getEleves().forEach((unEleve) -> {
                 classe1.add(new DefaultMutableTreeNode(unEleve.getPrenom()));
             });
-        
-       // classe1.add(new DefaultMutableTreeNode("élève1"));
-       // classe1.add(new DefaultMutableTreeNode("élève2"));
-       // classe1.add(new DefaultMutableTreeNode("élève3"));
+            
         DefaultMutableTreeNode classe2 = new DefaultMutableTreeNode("Classe Info");
         //ajouter des sous noeuds au noeud fils
         classe2.add(new DefaultMutableTreeNode("élève4"));

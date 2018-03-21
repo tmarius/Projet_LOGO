@@ -9,14 +9,14 @@ package projet_logo.model;
  *
  * @author Thomas
  */
-public class Eleve {
+public class eleve {
     private int id;
     private String nom;
     private String prenom;
     private int age;
     private int Classe;
 
-    public Eleve(int id, String nom, String prenom) {
+    public eleve(int id, String nom, String prenom) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
