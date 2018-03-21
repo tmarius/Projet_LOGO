@@ -87,7 +87,7 @@ public class MainWindow extends JFrame {
         prof.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
 
-                //refreshW(connexionEleve());
+                refreshW(connexionProf());
             }
         });
         
@@ -106,13 +106,22 @@ public class MainWindow extends JFrame {
      */
     public JPanel connexionEleve(){
                 
+        //Instanciation d'un objet JPanel
         JPanel ic = new JPanel();
         
         JPanel mainIc = new JPanel();
+        JPanel l4 = new JPanel();
+        
+        //ajout espace à droite 
+        JLabel l5 = new JLabel();
+        l5.setPreferredSize(new Dimension(150,60));
+        
         //ajout borderLayout
+        ic.setLayout(new BorderLayout());
         mainIc.setLayout(new BorderLayout());
+        l4.setLayout(new BorderLayout());
         //ajout GridLayout 4 lignes et 2 colonnes
-        JPanel menuCentre = new JPanel(new GridLayout(4,2));
+        JPanel menuCentre = new JPanel(new GridLayout(4,3));
         //ajout du GridLayout au centre du BorderLayout
         mainIc.add(menuCentre,BorderLayout.CENTER);
         
@@ -125,8 +134,9 @@ public class MainWindow extends JFrame {
         
         //définition d'une couleur de fond
         menuCentre.setBackground(Color.white);
-        
+        l4.setBackground(Color.white);
         ic.setBackground(Color.white);
+        mainIc.setBackground(Color.white);
         
         //adding the labels and text area
         JLabel l1 = new JLabel("Nom :");
@@ -171,8 +181,19 @@ public class MainWindow extends JFrame {
         b.setFont(new Font("Arial",Font.BOLD,30));
         //placer le bouton au sud
         mainIc.add(b,BorderLayout.SOUTH);
-        //couleur de fon blanc pour le bouton
-
+        
+        //ajout bouton retour
+        JButton retour = new JButton("Retour");
+        l4.add(retour);
+        //changement de taille du bouton
+        retour.setPreferredSize(new Dimension(150,60));
+        //changement de taille de la police du bouton
+        retour.setFont(new Font("Arial",Font.BOLD,30));
+        //placer le bouton au nord
+        l4.add(retour,BorderLayout.NORTH);
+        
+        ic.add(l5,BorderLayout.EAST);
+        ic.add(l4,BorderLayout.WEST);
         ic.add(mainIc);
         
         //ajout du listener sur le bouton démarrer
@@ -180,6 +201,14 @@ public class MainWindow extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 refreshW(interfacePrincEleve());
+            }
+        });
+        
+        //ajout du listener sur le bouton retour
+        retour.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+
+                refreshW(interfaceOuverture());
             }
         });
         
@@ -361,11 +390,113 @@ public class MainWindow extends JFrame {
     }
     
     /**
-     * méthode interfaceConnexionProf permet au prof de se connecter avec un mdp
+     * méthode connexionProfesseur crée une interface ou le professeur va rentrer son identifiant et son mot de passe pour pouvoir démarrer l'appli
+     * @return un panel qui correspond à l'affichage et que l'on va ajouter dans la frame principale
      */
     
-    public void interfaceConnexionProf(){
+    public JPanel connexionProf(){
+        JPanel icp = new JPanel();
         
+        JPanel mainIcp = new JPanel();
+        JPanel l4 = new JPanel();
+        
+        //ajout espace à droite 
+        JLabel l5 = new JLabel();
+        l5.setPreferredSize(new Dimension(150,60));
+        
+        //ajout borderLayout
+        icp.setLayout(new BorderLayout());
+        mainIcp.setLayout(new BorderLayout());
+        l4.setLayout(new BorderLayout());
+        //ajout GridLayout 2 lignes et 2 colonnes
+        JPanel menuCentre = new JPanel(new GridLayout(2,2));
+        //ajout du GridLayout au centre du BorderLayout
+        mainIcp.add(menuCentre,BorderLayout.CENTER);
+        
+        //ajout d'une image
+        JLabel image = new JLabel(new ImageIcon(getClass().getResource("/projet_logo/images/tortue_connexion.PNG")));
+        //redimension de l'image
+        image.setPreferredSize(new Dimension(350,350));
+        //placement de l'image dans le borderLayout au nord
+        mainIcp.add(image,BorderLayout.NORTH);
+        
+        //définition d'une couleur de fond
+        menuCentre.setBackground(Color.white);
+        l4.setBackground(Color.white);
+        icp.setBackground(Color.white);
+        mainIcp.setBackground(Color.white);
+        
+        //ajout d'un label et d'une aire de texte
+        JLabel l1 = new JLabel("Identifiant :");
+        //modifier taille de la police
+        l1.setFont(new Font("Arial",Font.BOLD,30));
+        
+
+        //taille du JLabel
+        l1.setPreferredSize(new Dimension(150,50));
+        //alignement horizontal du JLabel
+        l1.setHorizontalAlignment(SwingConstants.LEFT);
+        //alignement vertical du JLabel
+        l1.setVerticalAlignment(SwingConstants.CENTER);
+        menuCentre.add(l1);    
+        
+        JTextField t1 = new JTextField(); // à ajouter dans tous les Jtext une valeur par défaut qui est la variable de l'élève
+        //modifier taille de police dans le JTextField
+        t1.setFont(new Font("Arial",Font.BOLD,30));
+        menuCentre.add(t1);
+        
+        JLabel l2 = new JLabel("Mot de passe :");
+        //modifier taille de la police
+        l2.setFont(new Font("Arial",Font.BOLD,30));
+        menuCentre.add(l2);   
+        //cacher le texte dans l'aire de texte pour rentrer le mot de passe sans pouvoir le lire
+        JPasswordField t2 = new JPasswordField();
+        //modifier taille de police dans le JPasswordField
+        t2.setFont(new Font("Arial",Font.BOLD,30));
+        menuCentre.add(t2);
+        //vérifier que les noms et prénoms existent dans la base de données
+
+                
+        //ajout bouton démarrer
+        JButton b = new JButton("Démarrer");
+        //changement de taille du bouton
+        b.setPreferredSize(new Dimension(250,100));
+        b.setFont(new Font("Arial",Font.BOLD,30));
+        //placer le bouton au sud
+        mainIcp.add(b,BorderLayout.SOUTH);
+        
+        //ajout bouton retour
+        JButton retour = new JButton("Retour");
+        l4.add(retour);
+        //changement de taille du bouton
+        retour.setPreferredSize(new Dimension(150,60));
+        //changement de taille de la police du bouton
+        retour.setFont(new Font("Arial",Font.BOLD,30));
+        //placer le bouton au nord
+        l4.add(retour,BorderLayout.NORTH);
+        
+        icp.add(l5,BorderLayout.EAST);
+        icp.add(l4,BorderLayout.WEST);
+        icp.add(mainIcp);
+        
+        //ajout du listener sur le bouton démarrer
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+
+                refreshW(interfacePrincEleve());
+            }
+        });
+        
+        //ajout du listener sur le bouton retour
+        retour.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+
+                refreshW(interfaceOuverture());
+            }
+        });
+        
+        //besoin d'ajouter les listeners pour les text field, et que l'interface d'après soit spécifique de l'élève
+        return icp;
     }
     
     /**
