@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.ResultSet;
 import javax.swing.*;
+import projet_logo.model.Classe;
+import projet_logo.model.MainModel;
 
 /**
  * Page principale. Est une frame ayant des pannels changeant en fonction de l'interface. 
@@ -24,10 +26,11 @@ public class MainWindow extends JFrame {
     /**
      * Constructeur de l'interface
      */
-    public MainWindow(){
+    public MainWindow(MainModel datas){
         
     windows = new JFrame("Projet_LOGO"); //on construit la frame
-    windows.add(interfaceVisuExo()); //on commence par la première interface
+
+    windows.add(interfaceConnexion(datas.getClasse1())); //on commence par la première interface
     windows.setVisible(true);
     windows.pack();
     windows.setExtendedState(windows.MAXIMIZED_BOTH);
@@ -40,16 +43,23 @@ public class MainWindow extends JFrame {
     windows.repaint();
     windows.revalidate();
     
-//    windows.setLayout(new BorderLayout());
-//    menuDroite = new JPanel();
-//    menuDroite.setLayout(new BorderLayout());
-//    menuDroite.add(formulaires.InterfaceEleve() , BorderLayout.NORTH);
-//    menuDroite.add(table.createTable() , BorderLayout.SOUTH);
-//   windows.add(trees = new TreeExample(classe1), BorderLayout.WEST);
-//    windows.add(menuDroite, BorderLayout.EAST);
-
-   // windows.setSize(1000,1000);
+  
     }
+    
+    
+    public JPanel interfaceConnexion(Classe classe1) 
+    {    
+        JPanel Thewindows = new JPanel();
+        Thewindows.setLayout(new BorderLayout());
+        menuDroite = new JPanel();
+        menuDroite.setLayout(new BorderLayout());
+        menuDroite.add(formulaires.InterfaceEleve() , BorderLayout.NORTH);
+        menuDroite.add(table.createTable() , BorderLayout.SOUTH);
+        Thewindows.add(trees = new TreeExample(classe1), BorderLayout.WEST);
+        Thewindows.add(menuDroite, BorderLayout.EAST);
+        return (Thewindows);
+    }        
+    
     /**
      * méthode interfaceOuverture crée une interface avec deux boutons, permet de choisir si on se connecte en tant que prof ou en tant qu'élève
      * @return un panel qui correspond à l'affichage et que l'on va ajouter dans la frame principale

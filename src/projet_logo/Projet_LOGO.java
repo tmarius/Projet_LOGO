@@ -3,7 +3,7 @@ package projet_logo;
 
 //import java.sql.ResultSet;
 import java.util.ArrayList;
-//import projet_logo.model.MainModel;
+import projet_logo.model.MainModel;
 import projet_logo.model.Eleve;
 import projet_logo.vue.MainWindow;
 
@@ -22,16 +22,16 @@ public class Projet_LOGO {
     //Declaration    
     ArrayList<Eleve> eleves;
     eleves = new ArrayList<>();
-    //MainModel datas;
+    MainModel datas;
     
     
-    //datas = new MainModel(); 
+    datas = new MainModel(); 
      // Le mettre en static ? 
-    //datas.RetrieveBdd(); // Permet de charger la bdd dans des classes
+    datas.RetrieveBdd(); // Permet de charger la bdd dans des classes
      
-    MainWindow window = new MainWindow(); 
-    //Windows.RefreshW(datas.getClasse1()); // Appel les elements graphiques. La windows.
-    //window.RefreshW();
+    MainWindow window = new MainWindow(datas); 
+    //windows.RefreshW(datas); // Appel les elements graphiques. La windows.
+   
     
     //Requete R = new Requete(); 
     //ResultSet ResultatRequete;

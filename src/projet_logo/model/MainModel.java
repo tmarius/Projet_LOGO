@@ -55,12 +55,12 @@ public class MainModel {
     Eleve leseleves; //Declaration de l'object eleve.    
     classe1 = new Classe(1,"Classe1",2); //Declaration de l'object classe.        
     ResultSet Result; //Declation de l'object permettant de recuperer les resultats.
-    Result = NvtRequete("select * from nom"); //Lance la requete en string via la connexion requete et est recupere dans l object resultat.
+    Result = NvtRequete("select * from Eleve"); //Lance la requete en string via la connexion requete et est recupere dans l object resultat.
     
     try {
                 while (Result.next()) //Boucle temps que l'object n est pas vide
                 {
-                    leseleves = new Eleve(Result.getInt("id"), Result.getString("name"),
+                    leseleves = new Eleve(Result.getInt("idEleve"), Result.getString("nom"),
                     Result.getString("prenom"));  //Cree un eleve avec les information de la bdd (sur une itinerance i de la boucle)
                     classe1.ajoutEleves(leseleves);  //Ajoute l'eleve dans la liste d'eleve dans la classe                              
 //                    eleve.setSexe()=ResultatRequete.getBoolean("sexe");
