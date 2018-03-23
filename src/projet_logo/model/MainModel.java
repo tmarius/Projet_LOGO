@@ -18,6 +18,7 @@ import static projet_logo.model.SQLiteJDBCDriverConnection.connect;
 public class MainModel {
     private Classe classe1;
     private ListeExercices liste1;
+    private ListeTentatives liste2;
     
     /**
      * Permet de se connecter a la base de donnée, retourne un object de type ResultSet qui retient tout les resultat de la requete. L'input est la requete SQL en string 
@@ -94,7 +95,30 @@ public class MainModel {
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
                 //Si la connexion echoue
-            } 
+            }
    }
+    
+    
+    
+    public void retrieveTentative(){
+        
+    //pour récupérer les tentatives
+    Tentative tentative1;
+    liste2 = new ListeTentatives(); //déclaration de la liste de tentatives
+    ResultSet res;
+    res = NvtRequete("select * from Tentative");
+    
+    try {
+                while (res.next()) //Boucle tant que l'object n est pas vide
+                {
+                    tentative1 = new Tentative(res.getInt("idTentative"), res.getString("scriptEleve"), res.getString("commentaire"), res.getInt("refExercice"), res.getInt("refEleve"));  //Cree une tentative avec les information de la bdd (sur une itinerance i de la boucle)
+                    liste2.ajoutTentative(tentative1);  //Ajoute la tentative dans la liste de tentatives                            
+                }
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                //Si la connexion echoue
+            }
+   }
+    
 
 }
