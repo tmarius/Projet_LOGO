@@ -47,6 +47,11 @@ public class Exercice {
         return refProf;
     }
 
+    public ArrayList<Tentatives> getTentatives() {
+        return tentatives;
+    }
+    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -66,9 +71,12 @@ public class Exercice {
     public void setRefProf(int refProf) {
         this.refProf = refProf;
     }
-    
-    public void ajoutTenta(Tentatives tenta){
-        
+
+    public void setTentatives(ArrayList<Tentatives> tentatives) {
+        this.tentatives = tentatives;
     }
     
+    public void ajoutTenta(Tentatives tentas){
+        tentatives.add(tentas);
+    }  
 }

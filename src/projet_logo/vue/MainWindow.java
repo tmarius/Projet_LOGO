@@ -651,7 +651,7 @@ public class MainWindow extends JFrame {
         
     }
     
-    public JPanel interfacePrincProf(Classe classe1, Exercice exercice){
+    public JPanel interfacePrincProf(Classe classe1){
         
         JPanel panelGauche = new JPanel(new GridLayout(4,0));
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -659,8 +659,8 @@ public class MainWindow extends JFrame {
         //création des arbres
         TreeExample arbre = new TreeExample(classe1);
         arbre.setPreferredSize(new Dimension(200,300));
-        TreeExo arbre2 = new TreeExo(exercice);
-        arbre2.setPreferredSize(new Dimension(200,300));
+        //TreeExo arbre2 = new TreeExo(exercice);
+        //arbre2.setPreferredSize(new Dimension(200,300));
         
         //création des boutons
         JButton creer = new JButton("Créer Exercice");
@@ -671,7 +671,7 @@ public class MainWindow extends JFrame {
         panelGauche.add(creer);
         panelGauche.add(modif);
         panelGauche.add(arbre);
-        panelGauche.add(arbre2);
+        //panelGauche.add(arbre2);
         mainPanel.add(panelGauche, BorderLayout.WEST);
         
         return mainPanel;
