@@ -11,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.UIManager;
 import javax.swing.tree.DefaultMutableTreeNode;
+import projet_logo.model.Exercice;
 
 /**
  *
@@ -19,7 +20,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 public class TreeExo extends JPanel
 {
         private JTree tree;
-        public TreeExo()
+        public TreeExo(Exercice exercice)
     {
           try {
                 UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -31,7 +32,7 @@ public class TreeExo extends JPanel
         //créer les noeuds fils
         DefaultMutableTreeNode niv1 = new DefaultMutableTreeNode("Exercices débutants");
         //ajouter des sous noeuds au noeud fils
-        niv1.add(new DefaultMutableTreeNode("Exercice 1"));
+        niv1.add(new DefaultMutableTreeNode(exercice.getId()));
         niv1.add(new DefaultMutableTreeNode("Exercice 2"));
         niv1.add(new DefaultMutableTreeNode("Exercice 3"));
         DefaultMutableTreeNode niv2 = new DefaultMutableTreeNode("Exercices affirmés");
@@ -57,7 +58,7 @@ public class TreeExo extends JPanel
         tree.setRootVisible(true);
         //créer la barre déroulante
         add(new JScrollPane(tree));
-        tree.setPreferredSize(new Dimension(180, 400));
+        //tree.setPreferredSize(new Dimension(100, 200));
     
 }
 }

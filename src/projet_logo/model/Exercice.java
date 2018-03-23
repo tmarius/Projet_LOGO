@@ -4,11 +4,71 @@
  * and open the template in the editor.
  */
 package projet_logo.model;
+import java.util.ArrayList;
 
 /**
  *
  * @author Lucas
  */
 public class Exercice {
+    
+    private int id;
+    private String critere;
+    private String scriptSolution;
+    private String consigne;
+    private int refProf;
+    private ArrayList<Tentatives> tentatives; //chaque exercice a une liste de tentatives...?
+    
+        public Exercice(int id, String scriptSolution, String consigne, int refProf){
+        this.id = id;
+        this.critere = critere;
+        this.scriptSolution  = scriptSolution;
+        this.consigne = consigne;
+        this.refProf = refProf;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getCritere() {
+        return critere;
+    }
+
+    public String getScriptSolution() {
+        return scriptSolution;
+    }
+
+    public String getConsigne() {
+        return consigne;
+    }
+
+    public int getRefProf() {
+        return refProf;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCritere(String critere) {
+        this.critere = critere;
+    }
+
+    public void setScriptSolution(String scriptSolution) {
+        this.scriptSolution = scriptSolution;
+    }
+
+    public void setConsigne(String consigne) {
+        this.consigne = consigne;
+    }
+
+    public void setRefProf(int refProf) {
+        this.refProf = refProf;
+    }
+    
+    public void ajoutTenta(Tentatives tenta){
+        
+    }
     
 }

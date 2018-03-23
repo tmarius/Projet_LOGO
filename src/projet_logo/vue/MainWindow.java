@@ -8,8 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.ResultSet;
 import javax.swing.*;
-import projet_logo.model.Classe;
-import projet_logo.model.MainModel;
+import projet_logo.model.*;
 
 /**
  * Page principale. Est une frame ayant des pannels changeant en fonction de l'interface. 
@@ -25,12 +24,13 @@ public class MainWindow extends JFrame {
    
     /**
      * Constructeur de l'interface
+     * @param datas correspond aux données de la base de données
      */
     public MainWindow(MainModel datas){
         
     windows = new JFrame("Projet_LOGO"); //on construit la frame
 
-    windows.add(interfaceConnexion(datas.getClasse1())); //on commence par la première interface
+    windows.add(interfaceOuverture()); //on commence par la première interface
     windows.setVisible(true);
     windows.pack();
     windows.setExtendedState(windows.MAXIMIZED_BOTH);
@@ -392,6 +392,7 @@ public class MainWindow extends JFrame {
     /**
      * méthode interfaceCreaExo crée une interface accessible par le professeur et qui lui permet de créer des exercices
      * il visualise le dessin, le code, et a des boutons pour pouvoir diriger la tortue, elle ressemble à l'interface principale de l'élève avec des boutons de création en plus
+     * @return un panel qui correspond à l'affichage et que l'on va ajouter dans la frame principale
      */
     
     public JPanel interfaceCreaExo(){
@@ -534,18 +535,23 @@ public class MainWindow extends JFrame {
     public void eleveTenta(){
         
     }
-    public JPanel interfacePrincProf(){
+    
+    public JPanel interfacePrincProf(Classe classe1, Exercice exercice){
         
         JPanel panelGauche = new JPanel(new GridLayout(4,0));
         JPanel mainPanel = new JPanel(new BorderLayout());
         
         //création des arbres
-        TreeExo arbre = new TreeExo();
-        TreeExo arbre2 = new TreeExo();
+        TreeExample arbre = new TreeExample(classe1);
+        arbre.setPreferredSize(new Dimension(200,300));
+        TreeExo arbre2 = new TreeExo(exercice);
+        arbre2.setPreferredSize(new Dimension(200,300));
         
         //création des boutons
         JButton creer = new JButton("Créer Exercice");
+        creer.setPreferredSize(new Dimension(200,100));
         JButton modif = new JButton("Modifier Exercice");
+        modif.setPreferredSize(new Dimension(200,100));
         
         panelGauche.add(creer);
         panelGauche.add(modif);
@@ -559,12 +565,13 @@ public class MainWindow extends JFrame {
     /**
      * méthode interfacevisuExo crée une fenêtre à partir de laquelle leprof pourra visualiser les exercices qu'il a déja créé
      * sur la gauche on a la liste des exercices et sur la droite on peut voir le dessin et le code voulu, ainsi que les critères d'évaluation pour chaque statut
+     * @return un panel qui correspond à l'affichage et que l'on va ajouter dans la frame principale
      */
     public JPanel interfaceVisuExo(){
        JPanel mainPanel = new JPanel(new BorderLayout());
        
-       TreeExo arbre = new TreeExo();
-       mainPanel.add(arbre, BorderLayout.WEST);
+       //TreeExo arbre = new TreeExo();
+      // mainPanel.add(arbre, BorderLayout.WEST);
        
        mainPanel.add(new JLabel("Nom Exercice"), BorderLayout.NORTH);
        
