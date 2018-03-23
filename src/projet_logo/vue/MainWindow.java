@@ -226,12 +226,14 @@ public class MainWindow extends JFrame {
     }
     
     /**
-     * méthode interfacerésultats crée une interface accessible pour les élèves et qi va afficher la liste des résultats
- * des exercices qu'ils ont déja réalisé.
- * Pour chaque exercice on affiche le dessin et le code qui ont été réalisés, ainsi qu'une appréciation et un commentaire du prof
-     */
+    * méthode interfaceResultats crée une interface accessible pour les élèves et qi va afficher la liste des résultats
+    * des exercices qu'ils ont déja réalisé.
+    * Pour chaque exercice on affiche le dessin et le code qui ont été réalisés, ainsi qu'une appréciation et un commentaire du prof
+    */
     
     public void interfaceResultats(){
+        
+        
         
     }
     
@@ -301,7 +303,9 @@ public class MainWindow extends JFrame {
         JOptionPane popup = new JOptionPane("mettre pop up pour couleur");
 
         //menu de gauche
-        JPanel panelMenu = new JPanel(new GridLayout(7,0));
+        JPanel panelMenu = new JPanel(new GridLayout(8,0));
+        JButton retour = new JButton("RETOUR");
+        panelMenu.add(retour);
         panelMenu.add(new JButton("SAUVEGARDE"));
         panelMenu.add(new 
             JButton("RECOMMENCER"));
@@ -377,7 +381,15 @@ public class MainWindow extends JFrame {
         constCode.gridheight = 2;
         moyenPanel.add(code, constCode);
         mainPanel.add(moyenPanel, BorderLayout.CENTER);
-       return mainPanel;
+       
+        //ajout du listener sur le bouton démarrer
+        retour.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+
+                refreshW(connexionEleve());
+            }
+        });
+        return mainPanel;
     }
     
     /**
@@ -409,7 +421,7 @@ public class MainWindow extends JFrame {
         mainIcp.setLayout(new BorderLayout());
         l4.setLayout(new BorderLayout());
         //ajout GridLayout 2 lignes et 2 colonnes
-        JPanel menuCentre = new JPanel(new GridLayout(2,2));
+        JPanel menuCentre = new JPanel(new GridLayout(6,2));
         //ajout du GridLayout au centre du BorderLayout
         mainIcp.add(menuCentre,BorderLayout.CENTER);
         
