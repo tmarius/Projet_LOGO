@@ -16,9 +16,9 @@ import javax.swing.JPanel;
  */
 public class InterfacePrincProf {
     
-    JPanel panelGauche, mainPanel;
-    TreeExo arbre, arbre2;
-    JButton creer, modif;
+    private JPanel panelGauche, mainPanel;
+    private TreeExo arbre, arbre2;
+    private JButton creer, modif;
             
         public InterfacePrincProf(){
         

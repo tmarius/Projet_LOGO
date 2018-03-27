@@ -27,14 +27,14 @@ import javax.swing.JTextField;
  */
 public class InterfacePrincEleve {
     
-JPanel  mainPanel, moyenPanel, panelGauche,panelInteract,  panelMenu, setVitesse;
-BorderLayout layout;
-ImageIcon haut, gauche, droite, bas, modèleImage;
-JButton bgauche, bdroite, bbas, bhaut, choixCouleur;
-JOptionPane popup;
-GridBagConstraints constRev, constRes, constDessin, constImage, constCode;
-JLabel dessin, modèle;
-JTextField code;
+private JPanel  mainPanel, moyenPanel, panelGauche,panelInteract,  panelMenu, setVitesse;
+private BorderLayout layout;
+private ImageIcon haut, gauche, droite, bas, modèleImage;
+private JButton bgauche, bdroite, bbas, bhaut, choixCouleur;
+private JOptionPane popup;
+private GridBagConstraints constRev, constRes, constDessin, constImage, constCode;
+private JLabel dessin, modèle;
+private JTextField code;
 
 
     public InterfacePrincEleve(){ //mettre peut etre en parametre l'identité de l'utilisateur?

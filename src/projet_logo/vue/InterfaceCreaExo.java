@@ -9,8 +9,11 @@ package projet_logo.vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,13 +23,13 @@ import javax.swing.JTextField;
  *
  * @author Lucas
  */
-public class InterfaceCreaExo {
+public class InterfaceCreaExo{
     
-JPanel  mainPanel, panelGauche,panelInteract,  panelMenu, setVitesse, baniere, milieu, buttons;
-BorderLayout layout;
-ImageIcon haut, gauche, droite, bas;
-JButton bgauche, bdroite, bbas, bhaut, choixCouleur;
-JOptionPane popup;
+private JPanel  mainPanel, panelGauche,panelInteract,  panelMenu, setVitesse, baniere, milieu, buttons;
+private BorderLayout layout;
+private ImageIcon haut, gauche, droite, bas;
+private JButton bgauche, bdroite, bbas, bhaut, choixCouleur;
+private JOptionPane popup;
             
     public InterfaceCreaExo(){
     
@@ -126,4 +129,6 @@ JOptionPane popup;
     public JPanel getInterfaceCreaExo(){
     return mainPanel;
     }
+
+   
 }

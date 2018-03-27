@@ -15,10 +15,10 @@ import projet_logo.model.Classe;
  */
 public class InterfaceConnexion {
     private final JPanel menuDroite;
-    Formulaire formulaires;
-    TableDisplay table;
-    TreeExample trees ;
-    JPanel Thewindows;
+    private Formulaire formulaires;
+    private TableDisplay table;
+    private TreeExample trees ;
+    private JPanel Thewindows;
       
     public InterfaceConnexion(Classe classe1) 
     {    

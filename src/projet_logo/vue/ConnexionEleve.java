@@ -61,7 +61,7 @@ JLabel l5;
         mainIc.add(menuCentre,BorderLayout.CENTER);
         
         //ajout d'une image
-        image = new JLabel(new ImageIcon(getClass().getResource("/projet_logo/images/tortue_connexion.PNG")));
+        image = new JLabel(new ImageIcon(getClass().getResource("/projet_logo/images/bebeTortue.PNG")));
         //redimension de l'image
         image.setPreferredSize(new Dimension(350,350));
         //placement de l'image dans le borderLayout au nord
