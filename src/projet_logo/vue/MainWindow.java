@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.ResultSet;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import projet_logo.controler.Controler_table;
 import projet_logo.model.Classe;
 import projet_logo.model.MainModel;
 
@@ -29,7 +31,7 @@ public class MainWindow extends JFrame {
     public MainWindow(MainModel datas){
         
     windows = new JFrame("Projet_LOGO"); //on construit la frame
-    windows.add(interfaceConnexion(datas.getClasse1())); //on commence par la première interface
+    windows.add(interfaceConnexion(datas.getClasse1(),datas)); //on commence par la première interface
     windows.setVisible(true);
     windows.pack();
     windows.setExtendedState(windows.MAXIMIZED_BOTH);
@@ -46,16 +48,22 @@ public class MainWindow extends JFrame {
     }
     
     
-    public JPanel interfaceConnexion(Classe classe1) 
-    {    
+    public JPanel interfaceConnexion(Classe classe1, MainModel datas) 
+    {   
+        
+       
+        
+        
         JPanel Thewindows = new JPanel();
         Thewindows.setLayout(new BorderLayout());
         menuDroite = new JPanel();
         menuDroite.setLayout(new BorderLayout());
         menuDroite.add(formulaires.InterfaceEleve() , BorderLayout.NORTH);
-        menuDroite.add(table.createTable() , BorderLayout.SOUTH);
+        menuDroite.add(table.createTable(classe1) , BorderLayout.SOUTH);
         Thewindows.add(trees = new TreeExample(classe1), BorderLayout.WEST);
         Thewindows.add(menuDroite, BorderLayout.EAST);
+        Controler_table tcontroler = new Controler_table(classe1,table,datas);
+        
         return (Thewindows);
     }        
     

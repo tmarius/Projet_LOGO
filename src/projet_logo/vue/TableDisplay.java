@@ -13,6 +13,8 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 import javax.swing.table.*;
+import projet_logo.controler.Controler_table;
+import projet_logo.model.Classe;
 
 
 /**
@@ -32,7 +34,7 @@ public class TableDisplay extends JFrame implements ActionListener{
 public TableDisplay(){
    
 }
-public JPanel createTable(){
+public JPanel createTable(Classe classetable){
     
     myPanel = new JPanel();
     myPanel.setLayout(new BorderLayout());
@@ -41,47 +43,29 @@ public JPanel createTable(){
     myPanel.add(change,BorderLayout.EAST);
     change.addActionListener(this);
     
-    data = new Object[][]{
+    
+     
+    
+    int i;
+    String[][] shades = new String[classetable.getEleves().size()][2];
+    for (i=0;i<classetable.getEleves().size();i++) 
+    { shades[i][0]= classetable.getEleve(i).getNom(); 
+      shades[i][1]= classetable.getEleve(i).getPrenom();                     
+    }
         
-                {"Johnathan", "Sykes", Color.red, true},
-                {"Nicolas", "Van de Kampf", Color.black, true},
-                {"Damien", "Cuthbert", Color.cyan, true},
-                {"Corinne", "Valance", Color.blue, false},
-                {"Emilie", "Schrödinger", Color.magenta, false},
-                {"Delphine", "Duke", Color.yellow, false},
-                {"Eric", "Trump", Color.pink, true},
-                
-    };
-    model = new DefaultTableModel(data, title);
+    
+    
+    
+   
+    
+             
+    
+    model = new DefaultTableModel(shades, title);
     
     //creation table
     tableaumain = new JTable(model);
     
     
-    //listener
-    
-    
-    //test listener
-    tableaumain.setCellSelectionEnabled(true);
-    ListSelectionModel cellSelectionModel = tableaumain.getSelectionModel();
-    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
-      public void valueChanged(ListSelectionEvent e) {
-        String selectedData = null;
-
-        int[] selectedRow = tableaumain.getSelectedRows();
-        int[] selectedColumns = tableaumain.getSelectedColumns();
-
-        for (int i = 0; i < selectedRow.length; i++) {
-          for (int j = 0; j < selectedColumns.length; j++) {
-            selectedData = (String) tableaumain.getValueAt(selectedRow[i], selectedColumns[j]);
-          }
-        }
-        System.out.println("Selected: " + selectedData);
-      }
-
-    });
 
     myPanel.add(new JScrollPane(tableaumain), CENTER);
     
@@ -121,6 +105,10 @@ public JPanel createTable(){
         
     			
        //fireTableCellUpdated();
+    }
+
+    public JTable getTableaumain() {
+        return tableaumain;
     }
     
 public void actionPerformed(ActionEvent e) {
