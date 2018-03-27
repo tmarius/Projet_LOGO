@@ -20,8 +20,8 @@ public class Projet_LOGO {
      */
     public static void main(String[] args) {
     //Declaration    
-    ArrayList<Eleve> eleves;
-    eleves = new ArrayList<>();
+    //ArrayList<Eleve> eleves;
+    //eleves = new ArrayList<>();
     MainModel datas;
     
     

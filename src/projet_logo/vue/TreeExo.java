@@ -5,13 +5,10 @@
  */
 package projet_logo.vue;
 
-import java.awt.Dimension;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTree;
+import javax.swing.*;
 import javax.swing.UIManager;
 import javax.swing.tree.DefaultMutableTreeNode;
-import projet_logo.model.Exercice;
+import projet_logo.model.*;
 
 /**
  *
@@ -20,7 +17,7 @@ import projet_logo.model.Exercice;
 public class TreeExo extends JPanel
 {
         private JTree tree;
-        public TreeExo(Exercice exercice)
+        public TreeExo(ListeExercices listeExos)
     {
           try {
                 UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -30,11 +27,12 @@ public class TreeExo extends JPanel
         //créer le noeud racine
         DefaultMutableTreeNode exo = new DefaultMutableTreeNode("Liste des exercices");
         //créer les noeuds fils
-        DefaultMutableTreeNode niv1 = new DefaultMutableTreeNode("Exercices débutants");
+        DefaultMutableTreeNode exercices = new DefaultMutableTreeNode(listeExos.getListeExos());
         //ajouter des sous noeuds au noeud fils
-        niv1.add(new DefaultMutableTreeNode(exercice.getId()));
-        niv1.add(new DefaultMutableTreeNode("Exercice 2"));
-        niv1.add(new DefaultMutableTreeNode("Exercice 3"));
+        listeExos.getListeExos().forEach((exercice) -> {
+        exercices.add(new DefaultMutableTreeNode(exercice.getId())); });
+    
+        
         DefaultMutableTreeNode niv2 = new DefaultMutableTreeNode("Exercices affirmés");
         //ajouter des sous noeuds au noeud fils
         niv2.add(new DefaultMutableTreeNode("Exercice 1"));
@@ -45,7 +43,7 @@ public class TreeExo extends JPanel
         niv3.add(new DefaultMutableTreeNode("Exercice 1"));
         niv3.add(new DefaultMutableTreeNode("Exercice 2"));
         niv3.add(new DefaultMutableTreeNode("Exercice 3"));
-        exo.add(niv1);
+        exo.add(exercices);
         exo.add(niv2);
         exo.add(niv3);
         
@@ -59,6 +57,6 @@ public class TreeExo extends JPanel
         //créer la barre déroulante
         add(new JScrollPane(tree));
         //tree.setPreferredSize(new Dimension(100, 200));
-    
+} 
 }
-}
+

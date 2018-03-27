@@ -1,17 +1,11 @@
 package projet_logo.vue;
 
-import java.awt.Dimension;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTree;
-import javax.swing.SwingUtilities;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import projet_logo.model.Classe;
-import projet_logo.model.Eleve;
 
 /**
  * Classe permettant la création de Jtree

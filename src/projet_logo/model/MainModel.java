@@ -18,6 +18,7 @@ import static projet_logo.model.SQLiteJDBCDriverConnection.connect;
 public class MainModel {
     private Classe classe1;
     private ListeExercices liste1;
+    private Exercice exercice1;
     
     /**
      * Permet de se connecter a la base de donnée, retourne un object de type ResultSet qui retient tout les resultat de la requete. L'input est la requete SQL en string 
@@ -81,14 +82,14 @@ public class MainModel {
         
     //pour récupérer les exercices
     Exercice exercice1;
-    liste1 = new ListeExercices(); //déclaration de la liste d'exercices
+    //liste1 = new ListeExercices(); //déclaration de la liste d'exercices
     ResultSet res;
     res = NvtRequete("select * from Exercice");
     
     try {
-                while (res.next()) //Boucle tant que l'object n est pas vide
+                while (res.next()) //Boucle tant que l'objet n'est pas vide
                 {
-                    exercice1 = new Exercice(res.getInt("idExercice"), res.getString("scriptSolution"), res.getString("consigne"), res.getInt("refProf"));  //Cree un eleve avec les information de la bdd (sur une itinerance i de la boucle)
+                    exercice1 = new Exercice(res.getInt("idExercice"), res.getString("scriptSolution"), res.getString("criteres"), res.getString("consigne"), res.getInt("refProf"));  //Cree un eleve avec les information de la bdd (sur une itinerance i de la boucle)
                     liste1.ajoutExercice(exercice1);  //Ajoute l'exercice dans la liste d'exercices                             
                 }
             } catch (SQLException e) {

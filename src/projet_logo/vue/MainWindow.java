@@ -9,6 +9,7 @@ import java.awt.event.*;
 import java.sql.ResultSet;
 import javax.swing.*;
 import projet_logo.model.*;
+import java.util.ArrayList;
 
 /**
  * Page principale. Est une frame ayant des pannels changeant en fonction de l'interface. 
@@ -21,16 +22,18 @@ public class MainWindow extends JFrame {
     private JPanel menuDroite;
     private JFrame windows;
     private ResultSet Result;
+    private ListeExercices liste;
    
     /**
      * Constructeur de l'interface
      * @param datas correspond aux données de la base de données
      */
     public MainWindow(MainModel datas){
-        
+    
+    liste = new ListeExercices();
     windows = new JFrame("Projet_LOGO"); //on construit la frame
 
-    windows.add(interfaceOuverture()); //on commence par la première interface
+    windows.add(interfacePrincProf(datas.getClasse1())); //on commence par la première interface
     windows.setVisible(true);
     windows.pack();
     windows.setExtendedState(windows.MAXIMIZED_BOTH);
@@ -659,7 +662,7 @@ public class MainWindow extends JFrame {
         //création des arbres
         TreeExample arbre = new TreeExample(classe1);
         arbre.setPreferredSize(new Dimension(200,300));
-        //TreeExo arbre2 = new TreeExo(exercice);
+        //TreeExo arbre2 = new TreeExo(listeExos);
         //arbre2.setPreferredSize(new Dimension(200,300));
         
         //création des boutons

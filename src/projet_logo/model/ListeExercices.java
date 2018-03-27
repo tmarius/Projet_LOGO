@@ -12,8 +12,12 @@ import java.util.ArrayList;
  */
 public class ListeExercices {
     
-    ArrayList<Exercice> listeExos;
+    private ArrayList<Exercice> listeExos;
 
+    public ListeExercices(){
+        listeExos = new ArrayList<>();
+    }
+    
     public ArrayList<Exercice> getListeExos() {
         return listeExos;
     }

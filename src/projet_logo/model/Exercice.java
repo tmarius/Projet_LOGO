@@ -19,7 +19,7 @@ public class Exercice {
     private int refProf;
     private ArrayList<Tentatives> tentatives; //chaque exercice a une liste de tentatives...?
     
-        public Exercice(int id, String scriptSolution, String consigne, int refProf){
+        public Exercice(int id, String scriptSolution, String critere, String consigne, int refProf){
         this.id = id;
         this.critere = critere;
         this.scriptSolution  = scriptSolution;
