@@ -25,6 +25,7 @@ public class MainWindow extends JFrame {
     private JPanel menuDroite;
     private JFrame windows;
     private ResultSet Result;
+
 //    private final InterfaceConnexion InCo;
 //    private final InterfaceOuverture InOuv;
 //    private final ConnexionEleve CoEleve;
@@ -34,6 +35,7 @@ public class MainWindow extends JFrame {
 //    private final InterfacePrincProf PrProf;
 //    private final InterfaceVisuExo VisuEx;
 
+
     /**
      * Constructeur de l'interface
      * @param datas correspond aux données de la base de données
@@ -41,6 +43,7 @@ public class MainWindow extends JFrame {
     public MainWindow(MainModel datas){
     
     windows = new JFrame("Projet_LOGO"); //on construit la frame
+
 //    InCo = new InterfaceConnexion(datas.getClasse1());
 //    InOuv = new InterfaceOuverture();
 //    CoEleve = new ConnexionEleve();
@@ -54,6 +57,9 @@ public class MainWindow extends JFrame {
     
     //Interface de test avec Jtree, Jtable ...
 //    windows.add(InCo.getInterfaceConnexion()); //on commence par la première interface
+
+    
+
     
     //Interface ouverture
     //windows.add(InOuv.getInterfaceOuverture());
@@ -89,7 +95,7 @@ public class MainWindow extends JFrame {
     windows.revalidate();
     
     }
-    
+
 
 //    public JPanel interfaceConnexion(Classe classe1, MainModel datas) 
 //    {   
@@ -109,6 +115,9 @@ public class MainWindow extends JFrame {
 //        
 //        return (Thewindows);
 //    }        
+
+
+    
 
    
 }

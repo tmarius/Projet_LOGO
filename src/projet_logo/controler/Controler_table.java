@@ -10,6 +10,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 
 
+
 import javax.swing.event.ListSelectionListener;
 import projet_logo.model.Classe;
 import projet_logo.model.Eleve;
@@ -76,5 +77,6 @@ public class Controler_table {
 
                     }
         }
+
 }
 

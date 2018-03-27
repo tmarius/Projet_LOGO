@@ -15,10 +15,12 @@ public class Eleve {
     private String prenom;
     private int age;
 
+
     private boolean homme;
     
 
     public Eleve(int id, String nom, String prenom,int age, boolean homme) {
+
 
         this.id = id;
         this.nom = nom;
@@ -61,6 +63,7 @@ public class Eleve {
     }
 
 
+
     public boolean isHomme() {
         return homme;
     }
@@ -71,6 +74,7 @@ public class Eleve {
         this.homme = homme;
     }
     
+
 
     
 }

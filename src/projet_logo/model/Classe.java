@@ -64,10 +64,11 @@ public class Classe {
     
     public void ajoutEleves(Eleve unEleve)
     { eleves.add(unEleve);    }
-    
+
 
     public Eleve getEleve(int index){
         return eleves.get(index);
     }
+
 
 }

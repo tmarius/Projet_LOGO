@@ -15,8 +15,10 @@ import javax.swing.event.*;
 
 import javax.swing.table.*;
 
+
 import projet_logo.controler.Controler_table;
 import projet_logo.model.Classe;
+
 
 
 
@@ -53,6 +55,7 @@ public JPanel createTable(Classe classetable){
 
     
 
+
     int i;
     Object[][] data = new Object[classetable.getEleves().size()][5];
     for (i=0;i<classetable.getEleves().size();i++) 
@@ -69,7 +72,7 @@ public JPanel createTable(Classe classetable){
        
                      
 
-        
+
         
 
                 
@@ -77,9 +80,11 @@ public JPanel createTable(Classe classetable){
     model = new DefaultTableModel(data,title);
 
 
+
     
     //creation table
     tableaumain = new JTable(model);
+
 
     myPanel.add(new JScrollPane(tableaumain), CENTER);
      
