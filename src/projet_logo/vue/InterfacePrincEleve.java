@@ -9,18 +9,13 @@
      */
 package projet_logo.vue;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import projet_logo.model.*;
+import projet_logo.model.Canvas; 
+        
 /**
  *
  * @author Lucas
@@ -30,11 +25,32 @@ public class InterfacePrincEleve {
 JPanel  mainPanel, moyenPanel, panelGauche,panelInteract,  panelMenu, setVitesse;
 BorderLayout layout;
 ImageIcon haut, gauche, droite, bas, modèleImage;
-JButton bgauche, bdroite, bbas, bhaut, choixCouleur;
-JOptionPane popup;
-GridBagConstraints constRev, constRes, constDessin, constImage, constCode;
-JLabel dessin, modèle;
-JTextField code;
+JButton avancer, tourner,plus, moins,tracer, revoir, resultats, tortueRapide, tortueClassique, tortueCouleur;
+//JOptionPane tortueCouleur;
+GridBagConstraints constRev, constRes, constDessin, constImage, constCode, constAv,constTurn,constVit, constPlus,constMoins,constClass,constRap, constCoul, constCode2;
+JLabel dessin, modèle, vitesse;
+JTextField code,code2;
+Font police;
+TortueG tortueGraphique;
+TortueCouleur tCouleur;
+
+//ajout de la tortue
+private TortueG tortueG;
+private TortueRapide tortueR;
+private TortueCouleur tortueC;
+private Canvas myCanvas;
+private String tortueActuelle; 
+private JPanel panelCanvas;
+
+private JPanel panelTortues;
+private GridLayout gl;
+
+   private JButton valideButton;
+    private JButton eraseButton;
+    private JButton backButton;
+    private JButton tracerButton;
+    private JButton couleurButton;
+
 
 
     public InterfacePrincEleve(){ //mettre peut etre en parametre l'identité de l'utilisateur?
@@ -47,48 +63,99 @@ JTextField code;
         panelGauche = new JPanel(new GridLayout(2,0));
 
         //menu pour interagir avec la tortue, qui se trouve dans le menu gauche
-        panelInteract = new JPanel(new GridLayout(4,3));
-        panelInteract.add(new JLabel(" "));
+        panelInteract = new JPanel(new GridBagLayout()); 
         
-        haut = new ImageIcon(getClass().getResource("/projet_logo/images/flechehaut-ConvertImage.jpg"));
-        bhaut = new JButton(haut);
-        bhaut.setBackground(Color.WHITE);
-        panelInteract.add(bhaut);
+        constAv = new GridBagConstraints();
+        constAv.gridx = 0;
+        constAv.gridy = 0;
+        constAv.gridwidth = 1;
+        constAv.gridheight = 2;
+        avancer = new JButton("AVANCER");
+        avancer.setPreferredSize(new Dimension(130,140));
+        panelInteract.add(avancer,constAv);
         
-        panelInteract.add(new JLabel(" "));
+        constDessin = new GridBagConstraints();
+        constDessin.gridx = 1;
+        constDessin.gridy = 0;
+        constDessin.gridwidth = 1;
+        constDessin.gridheight = 2;
+        tracer = new JButton("TRACER");
+        tracer.setPreferredSize(new Dimension(130,140));
+        panelInteract.add(tracer,constDessin);
         
-        gauche = new ImageIcon(getClass().getResource("/projet_logo/images/flechegauche-ConvertImage.JPG"));
-        bgauche = new JButton(gauche);
-        bgauche.setBackground(Color.WHITE);
-        panelInteract.add(bgauche);
+        constTurn = new GridBagConstraints();
+        constTurn.gridx = 2;
+        constTurn.gridy = 0;
+        constTurn.gridwidth = 1;
+        constTurn.gridheight = 2;
+        tourner = new JButton("TOURNER");
+        tourner.setPreferredSize(new Dimension(130,140));
+        panelInteract.add(tourner,constTurn);
         
-        panelInteract.add(new JButton("AVANCER"));
+        constVit = new GridBagConstraints();
+        constVit.gridx = 1;
+        constVit.gridy = 2;
+        constVit.gridwidth = 1;
+        constVit.gridheight = 1;
+        vitesse = new JLabel("Vitesse : ");
+        police = new Font("Arial",Font.BOLD,16);
+        vitesse.setFont(police);
+        panelInteract.add(vitesse,constVit); //changer le chiffre avec la vitesse effective de la tortue
         
-        droite = new ImageIcon(getClass().getResource("/projet_logo/images/flechedroite-ConvertImage.JPG"));        
-        bdroite = new JButton(droite);
-        bdroite.setBackground(Color.WHITE);
-        panelInteract.add(bdroite);
+        constPlus = new GridBagConstraints();
+        constPlus.gridx = 0;
+        constPlus.gridy = 2;
+        constPlus.gridwidth = 1;
+        constPlus.gridheight = 1;
+        plus = new JButton("+");
+        plus.setPreferredSize(new Dimension(130,140));
+        panelInteract.add(plus,constPlus);
         
-        panelInteract.add(new JLabel(" "));
+        constMoins = new GridBagConstraints();
+        constMoins.gridx = 2;
+        constMoins.gridy = 2;
+        constMoins.gridwidth = 1;
+        constMoins.gridheight = 1;
+        moins = new JButton("-");
+        moins.setPreferredSize(new Dimension(130,140));
+        panelInteract.add(moins, constMoins);
         
-        bas = new ImageIcon(getClass().getResource("/projet_logo/images/flechebas-ConvertImage.JPG"));        
-        bbas = new JButton(bas);
-        bbas.setBackground(Color.WHITE);
-        panelInteract.add(bbas);
+        constClass = new GridBagConstraints();
+        constClass.gridx = 0;
+        constClass.gridy = 3;
+        constClass.gridwidth = 1;
+        constClass.gridheight = 2;
+        tortueClassique = new JButton("Tortue classique");
+        tortueClassique.setPreferredSize(new Dimension(130,70));
+        panelInteract.add(tortueClassique, constClass);
         
-        panelInteract.add(new JLabel(" "));
+        constRap = new GridBagConstraints();
+        constRap.gridx = 1;
+        constRap.gridy = 3;
+        constRap.gridwidth = 1;
+        constRap.gridheight = 2;
+        tortueRapide = new JButton("Tortue Rapide");
+        tortueRapide.setPreferredSize(new Dimension(130,70));
+        panelInteract.add(tortueRapide, constRap);
         
-        panelInteract.add(new JLabel("Vitesse de la tortue : "+2)); //changer le chiffre avec la vitesse effective de la tortue
-        //deux boutons + et - dans une seule case du grid
-        setVitesse = new JPanel(new GridLayout(2,0));
-        setVitesse.add(new JButton("+"));
-        //setVitesse.add(new JLabel(" "));
-        setVitesse.add(new JButton("-"));
-        panelInteract.add(setVitesse);
-
-        //pop up pour choisir la couleur d'écriture de la tortue
-        choixCouleur = new JButton("Couleur");
-        popup = new JOptionPane("mettre pop up pour couleur");
+        constCoul = new GridBagConstraints();
+        constCoul.gridx = 2;
+        constCoul.gridy = 3;
+        constCoul.gridwidth = 1;
+        constCoul.gridheight = 2;
+        tortueCouleur = new JButton("Tortue Couleur");
+        tCouleur = new TortueCouleur();
+        //rajouter un pop up pour choisir la couleur d'écriture de la tortue
+//        JFrame popup = new JFrame("Choix de la couleur");
+//        tortueCouleur.addActionListener(new ActionListener(){
+//            public void actionPerformed(ActionEvent e){
+//                Color newColor = JColorChooser.showDialog(popup, "Choisir la couleur d'écriture de la tortue!", tCouleur.getCouleur());
+//            }
+//        })
+        
+        
+        tortueCouleur.setPreferredSize(new Dimension(130,70));
+        panelInteract.add(tortueCouleur, constCoul);
 
         //menu de gauche
         panelMenu = new JPanel(new GridLayout(7,0));
@@ -109,64 +176,84 @@ JTextField code;
         panelGauche.add(panelMenu);
         panelGauche.add(panelInteract);
         mainPanel.add(panelGauche, BorderLayout.WEST);
+        
 
-        //menu dessin
+        //menu dessin, endroit ou la tortue va s'afficher
+        panelCanvas = new JPanel(); //canvas de la tortue
+        panelCanvas = myCanvas.getCanvasPanel();
+        myCanvas = Canvas.getCanvas();
+        
+        tortueGraphique = new TortueG();
+        
         constRev = new GridBagConstraints();
-        constRev.fill = GridBagConstraints.HORIZONTAL;
-        constRev.gridx = 0;
-        constRev.gridy = 0;
-        moyenPanel.add(new JButton("REVOIR"), constRev);
+        constRev.gridx = 1;
+        constRev.gridy = 1;
+        constRev.gridheight = 1;
+        constRev.gridwidth = 1;
+        revoir = new JButton("REVOIR");
+        revoir.setPreferredSize(new Dimension(100,30));
+        moyenPanel.add(revoir, constRev);
         
         constRes = new GridBagConstraints();
-        constRes.fill = GridBagConstraints.HORIZONTAL;
         constRes.gridx = 1;
-        constRes.gridy = 0;
+        constRes.gridy = 2;
+        constRes.gridheight = 1;
+        constRes.gridwidth = 1;
+        resultats = new JButton("RESULTATS");
+        resultats.setPreferredSize(new Dimension(100,30));
         moyenPanel.add(new JButton("RESULTATS"), constRes);
         
-        dessin = new JLabel("DESSIN"); // a modifier avec le dessin de l'eleve en cours de réalisation
-        dessin.setBackground(Color.WHITE);
-        dessin.setOpaque(true);
-        dessin.setVerticalTextPosition(JLabel.CENTER);
-        dessin.setHorizontalTextPosition(JLabel.CENTER);
-        dessin.setSize(400,400);
+        //dessin en haut à gauche
         constDessin = new GridBagConstraints();
         constDessin.gridx = 0;
-        constDessin.gridy = 1;
-        constDessin.gridwidth = 2;
-        constDessin.gridheight = 3;
-        moyenPanel.add(dessin, constDessin);
+        constDessin.gridy = 0;
+        constDessin.gridheight = 1;
+        constDessin.gridwidth = 1;
+        //panelCanvas.setPreferredSize(new Dimension(400,400));
+        moyenPanel.add(panelCanvas, constDessin);
         
         
-        //menu image
-        modèleImage = new ImageIcon(getClass().getResource("/projet_logo/images/tortue.PNG"));//taille a modifier pour que ce soit plus joli
-        modèle = new JLabel("Modèle à reproduire");
+    //menu image, modèle que l'élève devra reproduire en haut à droite       
+        //modèleImage = new ImageIcon(getClass().getResource("/projet_logo/images/tortue.PNG"));//taille a modifier pour que ce soit plus joli
+        modèle = new JLabel("modèle à reproduire");
         modèle.setVerticalTextPosition(JLabel.BOTTOM);
         modèle.setHorizontalTextPosition(JLabel.CENTER);        
-        modèle.setIcon(modèleImage);
+        //modèle.setIcon(modèleImage);
         modèle.setBackground(Color.WHITE);
         modèle.setOpaque(true);
         constImage = new GridBagConstraints();
         constImage.fill = GridBagConstraints.HORIZONTAL;
         constImage.fill = GridBagConstraints.VERTICAL;
-        constImage.gridx = 2;
+        constImage.gridx = 1;
         constImage.gridy = 0;
-        constImage.gridwidth = 2;
-        constImage.gridheight = 4;
+        constImage.gridheight = 1;
+        constImage.gridwidth = 1;
         moyenPanel.add(modèle, constImage);
 
-        //menu code
+        //menu code qu'il faut reproduire, modèle pour l'élève
         code = new JTextField("Code à reproduire");
         code.setEditable(false);
         code.setBackground(Color.white);
         constCode = new GridBagConstraints();
-        constCode.fill = GridBagConstraints.HORIZONTAL;
-        //constCode.fill = GridBagConstraints.VERTICAL;
         constCode.gridx = 0;
-        constCode.gridy = 4;
-        constCode.gridwidth = 4;
+        constCode.gridy = 1;
+        constCode.gridwidth = 1;
         constCode.gridheight = 2;
         moyenPanel.add(code, constCode);
+        
+        //menu code ou s'affiche au fur et à mesure le code généré par l'élève
+        code2 = new JTextField("Code qui s'affiche au fur et à mesure");
+        code2.setEditable(false);
+        code2.setBackground(Color.white);
+        constCode2 = new GridBagConstraints();
+        constCode2.gridx = 0;
+        constCode2.gridy = 3;
+        constCode2.gridwidth = 2;
+        constCode2.gridheight = 1;
+        moyenPanel.add(code2, constCode2);
+        
         mainPanel.add(moyenPanel, BorderLayout.CENTER);
+        
     }
     
         public JPanel getInterfacePrincEleve(){
