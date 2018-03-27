@@ -8,8 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.ResultSet;
 import javax.swing.*;
-import projet_logo.model.Classe;
-import projet_logo.model.MainModel;
+import projet_logo.model.*;
 
 /**
  * Page principale. Est une frame ayant des pannels changeant en fonction de l'interface. 
@@ -33,6 +32,7 @@ public class MainWindow extends JFrame {
 
     /**
      * Constructeur de l'interface
+     * @param datas correspond aux données de la base de données
      */
     public MainWindow(MainModel datas){
     
@@ -137,7 +137,7 @@ public class MainWindow extends JFrame {
         prof.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
 
-                //refreshW(connexionEleve());
+                refreshW(connexionProf());
             }
         });
         
@@ -156,6 +156,7 @@ public class MainWindow extends JFrame {
      */
     public JPanel connexionEleve(){
                 
+        //Instanciation d'un objet JPanel
         JPanel ic = new JPanel();
         
         JPanel mainIc = new JPanel();
@@ -275,12 +276,14 @@ public class MainWindow extends JFrame {
     }
     
     /**
-     * méthode interfacerésultats crée une interface accessible pour les élèves et qi va afficher la liste des résultats
- * des exercices qu'ils ont déja réalisé.
- * Pour chaque exercice on affiche le dessin et le code qui ont été réalisés, ainsi qu'une appréciation et un commentaire du prof
-     */
+    * méthode interfaceResultats crée une interface accessible pour les élèves et qi va afficher la liste des résultats
+    * des exercices qu'ils ont déja réalisé.
+    * Pour chaque exercice on affiche le dessin et le code qui ont été réalisés, ainsi qu'une appréciation et un commentaire du prof
+    */
     
     public void interfaceResultats(){
+        
+        
         
     }
     
@@ -350,7 +353,9 @@ public class MainWindow extends JFrame {
         JOptionPane popup = new JOptionPane("mettre pop up pour couleur");
 
         //menu de gauche
-        JPanel panelMenu = new JPanel(new GridLayout(7,0));
+        JPanel panelMenu = new JPanel(new GridLayout(8,0));
+        JButton retour = new JButton("RETOUR");
+        panelMenu.add(retour);
         panelMenu.add(new JButton("SAUVEGARDE"));
         panelMenu.add(new 
             JButton("RECOMMENCER"));
@@ -426,12 +431,21 @@ public class MainWindow extends JFrame {
         constCode.gridheight = 2;
         moyenPanel.add(code, constCode);
         mainPanel.add(moyenPanel, BorderLayout.CENTER);
-       return mainPanel;
+       
+        //ajout du listener sur le bouton démarrer
+        retour.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+
+                refreshW(connexionEleve());
+            }
+        });
+        return mainPanel;
     }
     
     /**
      * méthode interfaceCreaExo crée une interface accessible par le professeur et qui lui permet de créer des exercices
      * il visualise le dessin, le code, et a des boutons pour pouvoir diriger la tortue, elle ressemble à l'interface principale de l'élève avec des boutons de création en plus
+     * @return un panel qui correspond à l'affichage et que l'on va ajouter dans la frame principale
      */
     
     public JPanel interfaceCreaExo(){
@@ -534,11 +548,113 @@ public class MainWindow extends JFrame {
     }
     
     /**
-     * méthode interfaceConnexionProf permet au prof de se connecter avec un mdp
+     * méthode connexionProfesseur crée une interface ou le professeur va rentrer son identifiant et son mot de passe pour pouvoir démarrer l'appli
+     * @return un panel qui correspond à l'affichage et que l'on va ajouter dans la frame principale
      */
     
-    public void interfaceConnexionProf(){
+    public JPanel connexionProf(){
+        JPanel icp = new JPanel();
         
+        JPanel mainIcp = new JPanel();
+        JPanel l4 = new JPanel();
+        
+        //ajout espace à droite 
+        JLabel l5 = new JLabel();
+        l5.setPreferredSize(new Dimension(150,60));
+        
+        //ajout borderLayout
+        icp.setLayout(new BorderLayout());
+        mainIcp.setLayout(new BorderLayout());
+        l4.setLayout(new BorderLayout());
+        //ajout GridLayout 2 lignes et 2 colonnes
+        JPanel menuCentre = new JPanel(new GridLayout(6,2));
+        //ajout du GridLayout au centre du BorderLayout
+        mainIcp.add(menuCentre,BorderLayout.CENTER);
+        
+        //ajout d'une image
+        JLabel image = new JLabel(new ImageIcon(getClass().getResource("/projet_logo/images/tortue_connexion.PNG")));
+        //redimension de l'image
+        image.setPreferredSize(new Dimension(350,350));
+        //placement de l'image dans le borderLayout au nord
+        mainIcp.add(image,BorderLayout.NORTH);
+        
+        //définition d'une couleur de fond
+        menuCentre.setBackground(Color.white);
+        l4.setBackground(Color.white);
+        icp.setBackground(Color.white);
+        mainIcp.setBackground(Color.white);
+        
+        //ajout d'un label et d'une aire de texte
+        JLabel l1 = new JLabel("Identifiant :");
+        //modifier taille de la police
+        l1.setFont(new Font("Arial",Font.BOLD,30));
+        
+
+        //taille du JLabel
+        l1.setPreferredSize(new Dimension(150,50));
+        //alignement horizontal du JLabel
+        l1.setHorizontalAlignment(SwingConstants.LEFT);
+        //alignement vertical du JLabel
+        l1.setVerticalAlignment(SwingConstants.CENTER);
+        menuCentre.add(l1);    
+        
+        JTextField t1 = new JTextField(); // à ajouter dans tous les Jtext une valeur par défaut qui est la variable de l'élève
+        //modifier taille de police dans le JTextField
+        t1.setFont(new Font("Arial",Font.BOLD,30));
+        menuCentre.add(t1);
+        
+        JLabel l2 = new JLabel("Mot de passe :");
+        //modifier taille de la police
+        l2.setFont(new Font("Arial",Font.BOLD,30));
+        menuCentre.add(l2);   
+        //cacher le texte dans l'aire de texte pour rentrer le mot de passe sans pouvoir le lire
+        JPasswordField t2 = new JPasswordField();
+        //modifier taille de police dans le JPasswordField
+        t2.setFont(new Font("Arial",Font.BOLD,30));
+        menuCentre.add(t2);
+        //vérifier que les noms et prénoms existent dans la base de données
+
+                
+        //ajout bouton démarrer
+        JButton b = new JButton("Démarrer");
+        //changement de taille du bouton
+        b.setPreferredSize(new Dimension(250,100));
+        b.setFont(new Font("Arial",Font.BOLD,30));
+        //placer le bouton au sud
+        mainIcp.add(b,BorderLayout.SOUTH);
+        
+        //ajout bouton retour
+        JButton retour = new JButton("Retour");
+        l4.add(retour);
+        //changement de taille du bouton
+        retour.setPreferredSize(new Dimension(150,60));
+        //changement de taille de la police du bouton
+        retour.setFont(new Font("Arial",Font.BOLD,30));
+        //placer le bouton au nord
+        l4.add(retour,BorderLayout.NORTH);
+        
+        icp.add(l5,BorderLayout.EAST);
+        icp.add(l4,BorderLayout.WEST);
+        icp.add(mainIcp);
+        
+        //ajout du listener sur le bouton démarrer
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+
+                refreshW(interfacePrincEleve());
+            }
+        });
+        
+        //ajout du listener sur le bouton retour
+        retour.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+
+                refreshW(interfaceOuverture());
+            }
+        });
+        
+        //besoin d'ajouter les listeners pour les text field, et que l'interface d'après soit spécifique de l'élève
+        return icp;
     }
     
     /**
@@ -574,23 +690,28 @@ public class MainWindow extends JFrame {
     public void eleveTenta(){
         
     }
-    public JPanel interfacePrincProf(){
+    
+    public JPanel interfacePrincProf(Classe classe1){
         
         JPanel panelGauche = new JPanel(new GridLayout(4,0));
         JPanel mainPanel = new JPanel(new BorderLayout());
         
         //création des arbres
-        TreeExo arbre = new TreeExo();
-        TreeExo arbre2 = new TreeExo();
+        TreeExample arbre = new TreeExample(classe1);
+        arbre.setPreferredSize(new Dimension(200,300));
+        //TreeExo arbre2 = new TreeExo(exercice);
+        //arbre2.setPreferredSize(new Dimension(200,300));
         
         //création des boutons
         JButton creer = new JButton("Créer Exercice");
+        creer.setPreferredSize(new Dimension(200,100));
         JButton modif = new JButton("Modifier Exercice");
+        modif.setPreferredSize(new Dimension(200,100));
         
         panelGauche.add(creer);
         panelGauche.add(modif);
         panelGauche.add(arbre);
-        panelGauche.add(arbre2);
+        //panelGauche.add(arbre2);
         mainPanel.add(panelGauche, BorderLayout.WEST);
         
         return mainPanel;
@@ -599,12 +720,13 @@ public class MainWindow extends JFrame {
     /**
      * méthode interfacevisuExo crée une fenêtre à partir de laquelle leprof pourra visualiser les exercices qu'il a déja créé
      * sur la gauche on a la liste des exercices et sur la droite on peut voir le dessin et le code voulu, ainsi que les critères d'évaluation pour chaque statut
+     * @return un panel qui correspond à l'affichage et que l'on va ajouter dans la frame principale
      */
     public JPanel interfaceVisuExo(){
        JPanel mainPanel = new JPanel(new BorderLayout());
        
-       TreeExo arbre = new TreeExo();
-       mainPanel.add(arbre, BorderLayout.WEST);
+       //TreeExo arbre = new TreeExo();
+      // mainPanel.add(arbre, BorderLayout.WEST);
        
        mainPanel.add(new JLabel("Nom Exercice"), BorderLayout.NORTH);
        
