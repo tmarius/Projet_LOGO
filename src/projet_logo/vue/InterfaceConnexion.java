@@ -15,10 +15,10 @@ import projet_logo.model.Classe;
  */
 public class InterfaceConnexion {
     private final JPanel menuDroite;
-    Formulaire formulaires;
-    TableDisplay table;
-    TreeExample trees ;
-    JPanel Thewindows;
+    private Formulaire formulaires;
+    private TableDisplay table;
+    private TreeExample trees ;
+    private JPanel Thewindows;
       
     public InterfaceConnexion(Classe classe1) 
     {    
@@ -29,7 +29,7 @@ public class InterfaceConnexion {
         menuDroite = new JPanel();
         menuDroite.setLayout(new BorderLayout());
         menuDroite.add(formulaires.InterfaceEleve() , BorderLayout.NORTH);
-        menuDroite.add(table.createTable() , BorderLayout.SOUTH);
+        menuDroite.add(table.createTable(classe1) , BorderLayout.SOUTH);
         Thewindows.add(trees = new TreeExample(classe1), BorderLayout.WEST);
         Thewindows.add(menuDroite, BorderLayout.EAST);
     }        

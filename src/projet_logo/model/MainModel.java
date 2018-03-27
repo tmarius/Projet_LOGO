@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import static projet_logo.model.SQLiteJDBCDriverConnection.connect;
 
 /**
@@ -122,4 +121,11 @@ public class MainModel {
 //   }
     
 
+    public void updateEleve(int id, String nom, String prenom){
+           //creer la requete sql en fct des donnée changées
+           String sql_str;
+           sql_str="UPDATE Eleve SET nom= '"+nom+"',prenom= '"+prenom+"' WHERE idEleve ="+id ;  
+           NvtRequete(sql_str);
+          
+    }
 }

@@ -20,8 +20,8 @@ import javax.swing.JTextField;
  */
 public class InterfaceVisuExo {
     
-    JPanel mainPanel, centre, centreHaut;
-    TreeExo arbre;
+    private JPanel mainPanel, centre, centreHaut;
+    private TreeExo arbre;
 
     public InterfaceVisuExo(){
        mainPanel = new JPanel(new BorderLayout());

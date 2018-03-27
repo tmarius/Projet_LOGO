@@ -14,8 +14,7 @@ public class Eleve {
     private String nom;
     private String prenom;
     private int age;
-    private int Classe;
-
+    
     public Eleve(int id, String nom, String prenom) {
         this.id = id;
         this.nom = nom;
@@ -56,13 +55,7 @@ public class Eleve {
         this.age = age;
     }
 
-    public int getRefClasse() {
-        return Classe;
-    }
 
-    public void setRefClasse(int refClasse) {
-        this.Classe = refClasse;
-    }
 
     
 }

@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  */
 public class InterfaceListeClasse {
     
-   JPanel mainPanel, panelClasses, panelEleves;
+   private JPanel mainPanel, panelClasses, panelEleves;
     
     public InterfaceListeClasse(){
         mainPanel = new JPanel(new BorderLayout());

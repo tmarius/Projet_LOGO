@@ -8,6 +8,10 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.ResultSet;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import projet_logo.controler.Controler_table;
+import projet_logo.model.Classe;
+import projet_logo.model.MainModel;
 import projet_logo.model.*;
 import java.util.ArrayList;
 
@@ -15,9 +19,9 @@ import java.util.ArrayList;
  * Page principale. Est une frame ayant des pannels changeant en fonction de l'interface. 
  */
 public class MainWindow extends JFrame {
-    Formulaire formulaires = new Formulaire() ;
-    TreeExample trees ;
-    TableDisplay table = new TableDisplay();
+    private Formulaire formulaires = new Formulaire() ;
+    private TreeExample trees ;
+    private TableDisplay table = new TableDisplay();
             
     private JPanel menuDroite;
     private JFrame windows;
@@ -50,7 +54,7 @@ public class MainWindow extends JFrame {
 
     
     //Interface de test avec Jtree, Jtable ...
-    //windows.add(InCo.getInterfaceConnexion()); //on commence par la première interface
+    windows.add(InCo.getInterfaceConnexion()); //on commence par la première interface
     
     //Interface ouverture
     //windows.add(InOuv.getInterfaceOuverture());
@@ -85,6 +89,27 @@ public class MainWindow extends JFrame {
     windows.repaint();
     windows.revalidate();
     
-  
     }
+    
+    
+//    public JPanel interfaceConnexion(Classe classe1, MainModel datas) 
+//    {   
+//        
+//       
+//        
+//        
+//        JPanel Thewindows = new JPanel();
+//        Thewindows.setLayout(new BorderLayout());
+//        menuDroite = new JPanel();
+//        menuDroite.setLayout(new BorderLayout());
+//        menuDroite.add(formulaires.InterfaceEleve() , BorderLayout.NORTH);
+//        menuDroite.add(table.createTable(classe1) , BorderLayout.SOUTH);
+//        Thewindows.add(trees = new TreeExample(classe1), BorderLayout.WEST);
+//        Thewindows.add(menuDroite, BorderLayout.EAST);
+//        Controler_table tcontroler = new Controler_table(classe1,table,datas);
+//        
+//        return (Thewindows);
+//    }        
+    
+   
 }

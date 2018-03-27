@@ -22,10 +22,10 @@ import javax.swing.JPanel;
  */
 public class InterfaceOuverture {
     
-JPanel panel1;
-JPanel panel2;
-JButton prof;
-JButton eleve;
+private JPanel panel1;
+private JPanel panel2;
+private JButton prof;
+private JButton eleve;
 
     public InterfaceOuverture() {
         panel1 = new JPanel();

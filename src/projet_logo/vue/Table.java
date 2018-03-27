@@ -13,28 +13,26 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 import javax.swing.table.*;
-import projet_logo.controler.Controler_table;
-import projet_logo.model.Classe;
 
 
 /**
  *
  * @author ivan
  */
-public class TableDisplay extends JFrame implements ActionListener{
+public class Table extends JFrame implements ActionListener{
      
     private JPanel myPanel;
     private JButton change;
     private DefaultTableModel model;
 
-    private JTable tableaumain;
-    private final String[] title ={"Prénom", "Nom", "Couleur favorite", "Homme"};
+    private JTable tableaumain; 
+    private final String[] title ={"nomEleve", "prenomEleve", "scriptEleve", "commentaire"};
     private Object[][] data;
     
-public TableDisplay(){
+public Table(){
    
 }
-public JPanel createTable(Classe classetable){
+public JPanel createTable(){
     
     myPanel = new JPanel();
     myPanel.setLayout(new BorderLayout());
@@ -43,29 +41,42 @@ public JPanel createTable(Classe classetable){
     myPanel.add(change,BorderLayout.EAST);
     change.addActionListener(this);
     
-    
-     
-    
-    int i;
-    String[][] shades = new String[classetable.getEleves().size()][2];
-    for (i=0;i<classetable.getEleves().size();i++) 
-    { shades[i][0]= classetable.getEleve(i).getNom(); 
-      shades[i][1]= classetable.getEleve(i).getPrenom();                     
-    }
+    data = new Object[][]{
         
-    
-    
-    
-   
-    
-             
-    
-    model = new DefaultTableModel(shades, title);
+                {"Stark", "Aria", "AAATATAATTATTTA", "très bien"},
+                {"Dupont", "Toto", "AAAATAAATA", "bien"},
+                
+    };
+    model = new DefaultTableModel(data, title);
     
     //creation table
     tableaumain = new JTable(model);
     
     
+    //listener
+    
+    
+    //test listener
+    tableaumain.setCellSelectionEnabled(true);
+    ListSelectionModel cellSelectionModel = tableaumain.getSelectionModel();
+    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
+      public void valueChanged(ListSelectionEvent e) {
+        String selectedData = null;
+
+        int[] selectedRow = tableaumain.getSelectedRows();
+        int[] selectedColumns = tableaumain.getSelectedColumns();
+
+        for (int i = 0; i < selectedRow.length; i++) {
+          for (int j = 0; j < selectedColumns.length; j++) {
+            selectedData = (String) tableaumain.getValueAt(selectedRow[i], selectedColumns[j]);
+          }
+        }
+        System.out.println("Selected: " + selectedData);
+      }
+
+    });
 
     myPanel.add(new JScrollPane(tableaumain), CENTER);
     
@@ -105,10 +116,6 @@ public JPanel createTable(Classe classetable){
         
     			
        //fireTableCellUpdated();
-    }
-
-    public JTable getTableaumain() {
-        return tableaumain;
     }
     
 public void actionPerformed(ActionEvent e) {
