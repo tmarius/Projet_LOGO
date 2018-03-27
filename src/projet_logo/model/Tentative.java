@@ -8,7 +8,7 @@ package projet_logo.model;
 /**
  * @author Lucas
  */
-public class Tentatives {
+public class Tentative {
     
     private int idTentative;
     private String scriptEleve;
@@ -16,8 +16,10 @@ public class Tentatives {
     private int refExercice;
     private int refEleve;
     
-    public Tentatives(int idTentative, int refExercice, int refEleve){
+    public Tentative(int idTentative, String scriptEleve, String commentaire, int refExercice, int refEleve){
     this.idTentative = idTentative;
+    this.scriptEleve = scriptEleve;
+    this.commentaire = commentaire;
     this.refEleve = refEleve;
     this.refExercice = refExercice;   
     
@@ -62,4 +64,8 @@ public class Tentatives {
     public void setRefEleve(int refEleve) {
         this.refEleve = refEleve;
     }    
+    
+
+        
 }
+    
