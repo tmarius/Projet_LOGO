@@ -14,13 +14,15 @@ public class Eleve {
     private String nom;
     private String prenom;
     private int age;
-    private int Classe;
+    private boolean homme;
+    
 
-    public Eleve(int id, String nom, String prenom) {
+    public Eleve(int id, String nom, String prenom,int age, boolean homme) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        //this.age = age;
+        this.age = age;
+        this.homme= homme;
         //this.refClasse = refClasse;
     }
     
@@ -56,13 +58,13 @@ public class Eleve {
         this.age = age;
     }
 
-    public int getRefClasse() {
-        return Classe;
+    public boolean isHomme() {
+        return homme;
     }
 
-    public void setRefClasse(int refClasse) {
-        this.Classe = refClasse;
+    public void setHomme(boolean homme) {
+        this.homme = homme;
     }
-
+    
     
 }

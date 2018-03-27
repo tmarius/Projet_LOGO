@@ -30,7 +30,7 @@ public class MainWindow extends JFrame {
         
     windows = new JFrame("Projet_LOGO"); //on construit la frame
 
-    windows.add(interfaceOuverture()); //on commence par la première interface
+    windows.add(interfaceConnexion(datas.getClasse1())); //on commence par la première interface
     windows.setVisible(true);
     windows.pack();
     windows.setExtendedState(windows.MAXIMIZED_BOTH);
@@ -54,7 +54,7 @@ public class MainWindow extends JFrame {
         menuDroite = new JPanel();
         menuDroite.setLayout(new BorderLayout());
         menuDroite.add(formulaires.InterfaceEleve() , BorderLayout.NORTH);
-        menuDroite.add(table.createTable() , BorderLayout.SOUTH);
+        menuDroite.add(table.createTable(classe1) , BorderLayout.SOUTH);
         Thewindows.add(trees = new TreeExample(classe1), BorderLayout.WEST);
         Thewindows.add(menuDroite, BorderLayout.EAST);
         return (Thewindows);

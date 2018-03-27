@@ -9,10 +9,15 @@ package projet_logo.vue;
 import java.awt.*;
 import static java.awt.BorderLayout.CENTER;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.*;
 
 import javax.swing.table.*;
+import javax.swing.tree.DefaultMutableTreeNode;
+import projet_logo.model.Classe;
+import projet_logo.model.Eleve;
+import projet_logo.model.MainModel;
 
 
 /**
@@ -24,74 +29,72 @@ public class TableDisplay extends JFrame implements ActionListener{
     private JPanel myPanel;
     private JButton change;
     private DefaultTableModel model;
-
+    
+    private ListSelectionModel listSelectionModel;
     private JTable tableaumain;
-    private final String[] title ={"Prénom", "Nom", "Couleur favorite", "Homme"};
+    private final String[] title ={"Id","Prénom", "Nom", "Age", "Homme"};
+    
     private Object[][] data;
     
 public TableDisplay(){
    
 }
-public JPanel createTable(){
+public JPanel createTable(Classe classetable){
     
+   
+    ArrayList<Object> elv =new ArrayList<Object>();
     myPanel = new JPanel();
     myPanel.setLayout(new BorderLayout());
     
     change= new JButton("change");
     myPanel.add(change,BorderLayout.EAST);
     change.addActionListener(this);
+    //ArrayList<Object> tableelv =new ArrayList<Object>();
+
     
-    data = new Object[][]{
+    int i;
+    Object[][] data = new Object[classetable.getEleves().size()][5];
+    for (i=0;i<classetable.getEleves().size();i++) 
+    { data[i][0]= classetable.getEleve(i).getId(); 
+      data[i][1]= classetable.getEleve(i).getPrenom(); 
+      data[i][2]= classetable.getEleve(i).getNom();
+      data[i][3]= classetable.getEleve(i).getAge();
+      data[i][4]= classetable.getEleve(i).isHomme();
+    }
         
-                {"Johnathan", "Sykes", Color.red, true},
-                {"Nicolas", "Van de Kampf", Color.black, true},
-                {"Damien", "Cuthbert", Color.cyan, true},
-                {"Corinne", "Valance", Color.blue, false},
-                {"Emilie", "Schrödinger", Color.magenta, false},
-                {"Delphine", "Duke", Color.yellow, false},
-                {"Eric", "Trump", Color.pink, true},
+       
+                     
+
+        
+        
+
                 
-    };
-    model = new DefaultTableModel(data, title);
+   
+    model = new DefaultTableModel(data,title);
     
     //creation table
     tableaumain = new JTable(model);
-    
-    
-    //listener
-    
-    
-    //test listener
-    tableaumain.setCellSelectionEnabled(true);
-    ListSelectionModel cellSelectionModel = tableaumain.getSelectionModel();
-    cellSelectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-    cellSelectionModel.addListSelectionListener(new ListSelectionListener() {
-      public void valueChanged(ListSelectionEvent e) {
-        String selectedData = null;
-
-        int[] selectedRow = tableaumain.getSelectedRows();
-        int[] selectedColumns = tableaumain.getSelectedColumns();
-
-        for (int i = 0; i < selectedRow.length; i++) {
-          for (int j = 0; j < selectedColumns.length; j++) {
-            selectedData = (String) tableaumain.getValueAt(selectedRow[i], selectedColumns[j]);
-          }
-        }
-        System.out.println("Selected: " + selectedData);
-      }
-
-    });
-
     myPanel.add(new JScrollPane(tableaumain), CENTER);
-    
-    
+     
     myPanel.add(tableaumain, BorderLayout.CENTER);
     myPanel.add(change, BorderLayout.SOUTH);
     
     
+
+    //listener
+    
+    
+    
+
+    
+    
+   
+    
    return(myPanel);
 }
+
+
+ 
     public boolean isCellEditable(int row, int col) {
         //Note that the data/cell address is constant,
         //no matter where the cell appears onscreen.
@@ -128,4 +131,5 @@ public void actionPerformed(ActionEvent e) {
                 model.setValueAt("LOIC",2,2);
         }
 }
+   
 }

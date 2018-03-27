@@ -32,10 +32,10 @@ public class TreeExample extends JPanel {
         DefaultMutableTreeNode école = new DefaultMutableTreeNode("Ecole");
         //créer les noeuds fils
         DefaultMutableTreeNode classe1 = new DefaultMutableTreeNode(classe1bdd.getClasse());
-        //ajouter des sous noeuds au noeud fils
-        classe1bdd.getEleves().forEach((unEleve) -> {
-            classe1.add(new DefaultMutableTreeNode(unEleve.getPrenom() + " " + unEleve.getNom()));
-        });
+            //ajouter des sous noeuds au noeud fils
+            classe1bdd.getEleves().forEach((unEleve) -> {
+                classe1.add(new DefaultMutableTreeNode(unEleve.getPrenom() + " " + unEleve.getNom()));
+            });
 
         DefaultMutableTreeNode classe2 = new DefaultMutableTreeNode("Classe Info"); //classe quii vient pas de la BDD
 
