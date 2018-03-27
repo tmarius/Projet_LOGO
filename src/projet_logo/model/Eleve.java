@@ -14,10 +14,12 @@ public class Eleve {
     private String nom;
     private String prenom;
     private int age;
+
     private boolean homme;
     
 
     public Eleve(int id, String nom, String prenom,int age, boolean homme) {
+
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -58,13 +60,17 @@ public class Eleve {
         this.age = age;
     }
 
+
     public boolean isHomme() {
         return homme;
     }
+
+
 
     public void setHomme(boolean homme) {
         this.homme = homme;
     }
     
+
     
 }

@@ -14,10 +14,10 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 import javax.swing.table.*;
-import javax.swing.tree.DefaultMutableTreeNode;
+
+import projet_logo.controler.Controler_table;
 import projet_logo.model.Classe;
-import projet_logo.model.Eleve;
-import projet_logo.model.MainModel;
+
 
 
 /**
@@ -52,6 +52,7 @@ public JPanel createTable(Classe classetable){
     //ArrayList<Object> tableelv =new ArrayList<Object>();
 
     
+
     int i;
     Object[][] data = new Object[classetable.getEleves().size()][5];
     for (i=0;i<classetable.getEleves().size();i++) 
@@ -60,8 +61,11 @@ public JPanel createTable(Classe classetable){
       data[i][2]= classetable.getEleve(i).getNom();
       data[i][3]= classetable.getEleve(i).getAge();
       data[i][4]= classetable.getEleve(i).isHomme();
+
     }
-        
+     
+    
+
        
                      
 
@@ -71,9 +75,12 @@ public JPanel createTable(Classe classetable){
                 
    
     model = new DefaultTableModel(data,title);
+
+
     
     //creation table
     tableaumain = new JTable(model);
+
     myPanel.add(new JScrollPane(tableaumain), CENTER);
      
     myPanel.add(tableaumain, BorderLayout.CENTER);
@@ -124,6 +131,10 @@ public JPanel createTable(Classe classetable){
         
     			
        //fireTableCellUpdated();
+    }
+
+    public JTable getTableaumain() {
+        return tableaumain;
     }
     
 public void actionPerformed(ActionEvent e) {
