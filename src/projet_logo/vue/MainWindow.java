@@ -22,15 +22,55 @@ public class MainWindow extends JFrame {
     private JPanel menuDroite;
     private JFrame windows;
     private ResultSet Result;
-   
+    private final InterfaceConnexion InCo;
+    private final InterfaceOuverture InOuv;
+    private final ConnexionEleve CoEleve;
+    private final InterfacePrincEleve PrEleve;
+    private final InterfaceCreaExo CreaEx;
+    private final InterfaceListeClasse ListeClasse;
+    private final InterfacePrincProf PrProf;
+    private final InterfaceVisuExo VisuEx;
+
     /**
      * Constructeur de l'interface
      */
     public MainWindow(MainModel datas){
-        
+    
     windows = new JFrame("Projet_LOGO"); //on construit la frame
+    InCo = new InterfaceConnexion(datas.getClasse1());
+    InOuv = new InterfaceOuverture();
+    CoEleve = new ConnexionEleve();
+    PrEleve = new InterfacePrincEleve();
+    CreaEx = new InterfaceCreaExo();
+    ListeClasse = new InterfaceListeClasse();
+    PrProf =  new InterfacePrincProf();
+    VisuEx = new InterfaceVisuExo();
 
-    windows.add(interfaceConnexion(datas.getClasse1())); //on commence par la première interface
+    
+    //Interface de test avec Jtree, Jtable ...
+    //windows.add(InCo.getInterfaceConnexion()); //on commence par la première interface
+    
+    //Interface ouverture
+    //windows.add(InOuv.getInterfaceOuverture());
+    
+    //Interface Connexion Eleve
+    //windows.add(CoEleve.getConnexionEleve());
+    
+    //Interface Principale Eleve
+    //windows.add(PrEleve.getInterfacePrincEleve());
+
+    //Interface Creation Exercice
+    //windows.add(CreaEx.getInterfaceCreaExo());
+    
+    //Interface liste classes
+    //windows.add(ListeClasse.getInterfaceListeClasse());
+
+    //Interface principale prof
+   // windows.add(PrProf.getInterfacePrincProf());
+   
+    //Interface visualisation exercice
+   windows.add(VisuEx.getInterfaceVisuExo());
+
     windows.setVisible(true);
     windows.pack();
     windows.setExtendedState(windows.MAXIMIZED_BOTH);
