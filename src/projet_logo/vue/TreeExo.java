@@ -17,7 +17,8 @@ import projet_logo.model.*;
 public class TreeExo extends JPanel
 {
         private JTree tree;
-        public TreeExo(ListeExercices listeExos)
+        public TreeExo()
+
     {
           try {
                 UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -27,12 +28,16 @@ public class TreeExo extends JPanel
         //créer le noeud racine
         DefaultMutableTreeNode exo = new DefaultMutableTreeNode("Liste des exercices");
         //créer les noeuds fils
-        DefaultMutableTreeNode exercices = new DefaultMutableTreeNode(listeExos.getListeExos());
+        //DefaultMutableTreeNode exercices = new DefaultMutableTreeNode(listeExos.getListeExos());
         //ajouter des sous noeuds au noeud fils
-        listeExos.getListeExos().forEach((exercice) -> {
-        exercices.add(new DefaultMutableTreeNode(exercice.getId())); });
+
+        //listeExos.getListeExos().forEach((exercice) -> {
+        //exercices.add(new DefaultMutableTreeNode(exercice.getId())); });
     
         
+        //niv1.add(new DefaultMutableTreeNode(exercice.getId()));
+        //niv1.add(new DefaultMutableTreeNode("Exercice 2"));
+        //niv1.add(new DefaultMutableTreeNode("Exercice 3"));
         DefaultMutableTreeNode niv2 = new DefaultMutableTreeNode("Exercices affirmés");
         //ajouter des sous noeuds au noeud fils
         niv2.add(new DefaultMutableTreeNode("Exercice 1"));
@@ -43,7 +48,7 @@ public class TreeExo extends JPanel
         niv3.add(new DefaultMutableTreeNode("Exercice 1"));
         niv3.add(new DefaultMutableTreeNode("Exercice 2"));
         niv3.add(new DefaultMutableTreeNode("Exercice 3"));
-        exo.add(exercices);
+        //exo.add(exercices);
         exo.add(niv2);
         exo.add(niv3);
         
