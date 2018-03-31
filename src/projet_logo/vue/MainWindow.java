@@ -16,6 +16,8 @@ import projet_logo.model.*;
 
 /**
  * Page principale. Est une frame ayant des pannels changeant en fonction de l'interface. 
+ *Il est possible de passer d'une interface à une autre en en appelant.
+ * @author grp8
  */
 public class MainWindow extends JFrame {
     private Formulaire formulaires = new Formulaire() ;
