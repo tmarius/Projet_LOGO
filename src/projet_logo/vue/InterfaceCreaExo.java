@@ -1,9 +1,4 @@
-    /**
-     * Classe interfaceCreaExo crée une interface accessible par le professeur et qui lui permet de créer des exercices
-     * il visualise le dessin, le code, et a des boutons pour pouvoir diriger la tortue, elle ressemble à l'interface principale de l'élève avec des boutons de création en plus
-     * 
-     * Avec méthode qui retourne un panel correspondant à l'affichage de la vue souhaité et que l'on va ajouter dans la frame principale.
-     */
+    
 package projet_logo.vue;
 
 import java.awt.BorderLayout;
@@ -20,9 +15,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- *
- * @author Lucas
- */
+     * Classe interfaceCreaExo crée une interface accessible par le professeur et qui lui permet de créer des exercices
+     * il visualise le dessin, le code, et a des boutons pour pouvoir diriger la tortue, elle ressemble à l'interface principale de l'élève avec des boutons de création en plus
+     * 
+     * Avec méthode qui retourne un panel correspondant à l'affichage de la vue souhaité et que l'on va ajouter dans la frame principale.
+     *@author grp8
+     */
 public class InterfaceCreaExo{
     
 private JPanel  mainPanel, panelGauche,panelInteract,  panelMenu, setVitesse, baniere, milieu, buttons;
