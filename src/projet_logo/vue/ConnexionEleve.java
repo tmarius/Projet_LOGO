@@ -51,8 +51,8 @@ public class ConnexionEleve {
         l4.setLayout(new BorderLayout());
 
         //ajout GridLayout 3 lignes et 2 colonnes
-        menuCentre = new JPanel(new GridLayout(3, 2));
-
+        menuCentre = new JPanel(new GridLayout(4,3));
+        
         //ajout du GridLayout au centre du BorderLayout
         mainIc.add(menuCentre, BorderLayout.CENTER);
 
@@ -98,8 +98,8 @@ public class ConnexionEleve {
         //modifier taille de police dans le JTextField
         t2.setFont(font);
         menuCentre.add(t2);
-
-        l3 = new JLabel("Classe");
+        
+        l3 = new JLabel("Classe :");
         l3.setFont(font);
         menuCentre.add(l3);
         classe = new JComboBox();
