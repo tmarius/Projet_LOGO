@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -46,6 +48,15 @@ private JPanel panelCanvas;
         layout = new BorderLayout();
         mainPanel = new JPanel(layout);        
         panelGauche = new JPanel(new GridLayout(2,0));
+        
+        //parmètres de base pour le design
+        Color couleurBlanche = new Color(255, 255, 255);
+        Color couleurFondBoutons = new Color(140, 140, 140);
+        Font font = new Font(Font.SERIF, Font.BOLD, 18);
+        Dimension tailleGrosBoutons = new Dimension(130, 140);
+        Dimension tailleMoyenBoutons = new Dimension(130, 70);
+        //Color couleurFondRetour = new Color(255, 120, 120);
+        Color SourisPasse = new Color(0, 0, 0);
 
         //menu pour interagir avec la tortue, qui se trouve dans le menu droite 
         panelInteract = new JPanel(new GridBagLayout());
@@ -56,10 +67,10 @@ private JPanel panelCanvas;
         constAv.gridwidth = 1;
         constAv.gridheight = 2;
         avancer = new JButton("AVANCER");
-        avancer.setPreferredSize(new Dimension(130, 140));
-        avancer.setBackground(new Color(140, 140, 140));
-        avancer.setForeground(new Color(255, 255, 255));
-        avancer.setFont(new Font(Font.SERIF, Font.BOLD, 18));
+        avancer.setPreferredSize(tailleGrosBoutons);
+        avancer.setBackground(couleurFondBoutons);
+        avancer.setForeground(couleurBlanche);
+        avancer.setFont(font);
         panelInteract.add(avancer, constAv);
         c1 = new Controler_IntCreaExo(frame, "AVANCER");
         avancer.addActionListener(c1);
@@ -70,10 +81,10 @@ private JPanel panelCanvas;
         constDessin.gridwidth = 1;
         constDessin.gridheight = 2;
         tracer = new JButton("TRACER");
-        tracer.setPreferredSize(new Dimension(130, 140));
-        tracer.setBackground(new Color(140, 140, 140));
-        tracer.setForeground(new Color(255, 255, 255));
-        tracer.setFont(new Font(Font.SERIF, Font.BOLD, 18));
+        tracer.setPreferredSize(tailleGrosBoutons);
+        tracer.setBackground(couleurFondBoutons);
+        tracer.setForeground(couleurBlanche);
+        tracer.setFont(font);
         panelInteract.add(tracer, constDessin);
         c2 = new Controler_IntCreaExo(frame, "TRACER");
         tracer.addActionListener(c2);
@@ -84,10 +95,10 @@ private JPanel panelCanvas;
         constTurn.gridwidth = 1;
         constTurn.gridheight = 2;
         tourner = new JButton("TOURNER");
-        tourner.setPreferredSize(new Dimension(130, 140));
-        tourner.setBackground(new Color(140, 140, 140));
-        tourner.setForeground(new Color(255, 255, 255));
-        tourner.setFont(new Font(Font.SERIF, Font.BOLD, 18));
+        tourner.setPreferredSize(tailleGrosBoutons);
+        tourner.setBackground(couleurFondBoutons);
+        tourner.setForeground(couleurBlanche);
+        tourner.setFont(font);
         panelInteract.add(tourner, constTurn);
         c3 = new Controler_IntCreaExo(frame, "TOURNER");
         tourner.addActionListener(c3);
@@ -98,8 +109,8 @@ private JPanel panelCanvas;
         constVit.gridwidth = 1;
         constVit.gridheight = 1;
         vitesse = new JLabel("Vitesse : ");
-        police = new Font("Arial", Font.BOLD, 16);
-        vitesse.setBackground(new Color(140, 140, 140));
+        police = new Font(Font.SERIF, Font.BOLD, 16);
+        vitesse.setBackground(couleurFondBoutons);
         vitesse.setFont(police);
         panelInteract.add(vitesse, constVit); //changer le chiffre avec la vitesse effective de la tortue
 
@@ -109,11 +120,11 @@ private JPanel panelCanvas;
         constPlus.gridwidth = 1;
         constPlus.gridheight = 1;
         plus = new JButton("+");
-        plus.setPreferredSize(new Dimension(130, 140));
+        plus.setPreferredSize(tailleGrosBoutons);
         plus.setEnabled(false);
-        plus.setBackground(new Color(140, 140, 140));
-        plus.setForeground(new Color(255, 255, 255));
-        plus.setFont(new Font(Font.SERIF, Font.BOLD, 18));
+        plus.setBackground(couleurFondBoutons);
+        plus.setForeground(couleurBlanche);
+        plus.setFont(font);
         panelInteract.add(plus, constPlus);
         c4 = new Controler_IntCreaExo(frame, "+");
         plus.addActionListener(c4);
@@ -124,10 +135,10 @@ private JPanel panelCanvas;
         constMoins.gridwidth = 1;
         constMoins.gridheight = 1;
         moins = new JButton("-");
-        moins.setPreferredSize(new Dimension(130, 140));
-        moins.setBackground(new Color(140, 140, 140));
-        moins.setForeground(new Color(255, 255, 255));
-        moins.setFont(new Font(Font.SERIF, Font.BOLD, 18));
+        moins.setPreferredSize(tailleGrosBoutons);
+        moins.setBackground(couleurFondBoutons);
+        moins.setForeground(couleurBlanche);
+        moins.setFont(font);
         panelInteract.add(moins, constMoins);
         moins.setEnabled(false);
         c5 = new Controler_IntCreaExo(frame, "-");
@@ -171,9 +182,9 @@ private JPanel panelCanvas;
         
         buttons = new JPanel(new GridLayout(3,0));
         tortueClassique = new JButton("Créer Tortue");
-        tortueClassique.setPreferredSize(new Dimension(130, 70));
-        tortueClassique.setBackground(new Color(140, 140, 140));
-        tortueClassique.setForeground(new Color(255, 255, 255));
+        tortueClassique.setPreferredSize(tailleMoyenBoutons);
+        tortueClassique.setBackground(couleurFondBoutons);
+        tortueClassique.setForeground(couleurBlanche);
         tortueClassique.setFont(new Font(Font.SERIF, Font.BOLD, 15));
         c6 = new Controler_IntCreaExo(frame, "classique");
         tortueClassique.addActionListener(c6);
@@ -188,18 +199,18 @@ private JPanel panelCanvas;
 //            }
 //        })
 
-        tortueCouleur.setPreferredSize(new Dimension(130, 70));
-        tortueCouleur.setBackground(new Color(140, 140, 140));
-        tortueCouleur.setForeground(new Color(255, 255, 255));
+        tortueCouleur.setPreferredSize(tailleMoyenBoutons);
+        tortueCouleur.setBackground(couleurFondBoutons);
+        tortueCouleur.setForeground(couleurBlanche);
         tortueCouleur.setFont(new Font(Font.SERIF, Font.BOLD, 15));
         c8 = new Controler_IntCreaExo(frame, "couleur");
         tortueCouleur.addActionListener(c8);
         buttons.add(tortueCouleur);
         
                 tortueRapide = new JButton("Créer Tortue Rapide");
-        tortueRapide.setPreferredSize(new Dimension(130, 70));
-        tortueRapide.setBackground(new Color(140, 140, 140));
-        tortueRapide.setForeground(new Color(255, 255, 255));
+        tortueRapide.setPreferredSize(tailleMoyenBoutons);
+        tortueRapide.setBackground(couleurFondBoutons);
+        tortueRapide.setForeground(couleurBlanche);
         tortueRapide.setFont(new Font(Font.SERIF, Font.BOLD, 15));
         c7 = new Controler_IntCreaExo(frame, "rapide");
         tortueRapide.addActionListener(c7);
@@ -209,7 +220,223 @@ private JPanel panelCanvas;
         
         mainPanel.add(milieu, BorderLayout.CENTER);
        
+        //MouseListeners des boutons
         
+        tracer.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Color SourisPasse = new Color(0, 0, 0);
+                tracer.setBackground(SourisPasse);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                tracer.setBackground(couleurFondBoutons);
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+        });
+        
+        moins.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Color SourisPasse = new Color(0, 0, 0);
+                moins.setBackground(SourisPasse);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                moins.setBackground(couleurFondBoutons);
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+        });
+        
+        plus.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Color SourisPasse = new Color(0, 0, 0);
+                plus.setBackground(SourisPasse);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                plus.setBackground(couleurFondBoutons);
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+        });
+        
+        tourner.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Color SourisPasse = new Color(0, 0, 0);
+                tourner.setBackground(SourisPasse);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                tourner.setBackground(couleurFondBoutons);
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+        });
+        
+        avancer.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Color SourisPasse = new Color(0, 0, 0);
+                avancer.setBackground(SourisPasse);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                avancer.setBackground(couleurFondBoutons);
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+        });
+        
+        tortueClassique.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Color SourisPasse = new Color(0, 0, 0);
+                tortueClassique.setBackground(SourisPasse);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                tortueClassique.setBackground(couleurFondBoutons);
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+        });
+        
+        tortueRapide.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Color SourisPasse = new Color(0, 0, 0);
+                tortueRapide.setBackground(SourisPasse);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                tortueRapide.setBackground(couleurFondBoutons);
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+        });
+        
+        tortueCouleur.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Color SourisPasse = new Color(0, 0, 0);
+                tortueCouleur.setBackground(SourisPasse);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                tortueCouleur.setBackground(couleurFondBoutons);
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+        });
                
     }
     public JPanel getInterfaceCreaExo(){
