@@ -9,12 +9,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import projet_logo.controler.Controler_InterfaceOuverture;
 
 /**
  *
@@ -26,8 +25,13 @@ private JPanel panel1;
 private JPanel panel2;
 private JButton prof;
 private JButton eleve;
+private MainWindow frame;
+private Controler_InterfaceOuverture controler1, controler2; 
 
-    public InterfaceOuverture() {
+
+    public InterfaceOuverture(MainWindow w) {
+        
+        frame = w;
         panel1 = new JPanel();
         panel2 = new JPanel();
     
@@ -44,6 +48,12 @@ private JButton eleve;
         panel2.add(eleve);
         
         panel1.add(panel2, BorderLayout.SOUTH);
+        
+        //ajout des listeners sur les boutons
+        controler1 = new Controler_InterfaceOuverture(frame,"prof");
+        controler2 = new Controler_InterfaceOuverture(frame,"eleve");
+        prof.addActionListener(controler1);
+        eleve.addActionListener(controler2);
         
         ImageIcon logo = new ImageIcon(getClass().getResource("/projet_logo/images/tortue_connexion.png"));
         JLabel titre = new JLabel("Apprendre la programmation en s'amusant!", JLabel.CENTER);

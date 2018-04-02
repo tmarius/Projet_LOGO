@@ -12,7 +12,6 @@ import javax.swing.event.ListSelectionListener;
 import projet_logo.model.Classe;
 import projet_logo.model.Eleve;
 import projet_logo.model.MainModel;
-import projet_logo.vue.MainWindow;
 import projet_logo.vue.TableDisplay;
 
 /**

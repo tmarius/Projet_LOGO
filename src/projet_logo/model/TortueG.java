@@ -151,5 +151,11 @@ public class TortueG {
     public int getY() {
         return y;
     }
+
+    public void setTrace(boolean trace) {
+        this.trace = trace;
+    }
+    
+    
     
 }

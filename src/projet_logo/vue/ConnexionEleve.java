@@ -5,20 +5,9 @@
      */
 package projet_logo.vue;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import java.awt.*;
+import javax.swing.*;
+import projet_logo.controler.Controler_ConnexionEleve;
 
 /**
  *
@@ -39,9 +28,12 @@ JButton retour;
 JComboBox classe;
 JTextField t2, t1;
 JLabel l5;
+MainWindow frame;
+Controler_ConnexionEleve controler1,controler2;
 
-    public ConnexionEleve(){
+    public ConnexionEleve(MainWindow f){
                 
+        frame = f;
         ic = new JPanel();
         
         mainIc = new JPanel();
@@ -73,7 +65,6 @@ JLabel l5;
         ic.setBackground(Color.white);
         mainIc.setBackground(Color.white);
         
-        //adding the labels and text area
         l1 = new JLabel("Nom :");
         //modifier taille de la police
         l1.setFont(new Font("Arial",Font.BOLD,30));
@@ -87,7 +78,7 @@ JLabel l5;
         l1.setVerticalAlignment(SwingConstants.CENTER);
         menuCentre.add(l1);    
         
-        t1 = new JTextField(); // à ajouter dans tous les Jtext une valeur par défaut qui est la variable de l'élève
+        t1 = new JTextField(); 
         //modifier taille de police dans le JTextField
         t1.setFont(new Font("Arial",Font.BOLD,30));
         menuCentre.add(t1);
@@ -127,27 +118,16 @@ JLabel l5;
         //placer le bouton au nord
         l4.add(retour,BorderLayout.NORTH);
         
+        //ajout des controleurs sur les boutons
+        controler1 = new Controler_ConnexionEleve(frame,"retour");
+        controler2 = new Controler_ConnexionEleve(frame,"démarrer");
+        retour.addActionListener(controler1);
+        b.addActionListener(controler2);
+        
+        
         ic.add(l5,BorderLayout.EAST);
         ic.add(l4,BorderLayout.WEST);
         ic.add(mainIc);
-        
-//        //ajout du listener sur le bouton démarrer
-//        b.addActionListener(new ActionListener(){
-//            public void actionPerformed(ActionEvent e) {
-//
-//                refreshW(interfacePrincEleve());
-//            }
-//        });
-//        
-//        //ajout du listener sur le bouton retour
-//        retour.addActionListener(new ActionListener(){
-//            public void actionPerformed(ActionEvent e) {
-//
-//                refreshW(interfaceOuverture());
-//            }
-//        });
-//        
-        //besoin d'ajouter les listeners pour les text field, et que l'interface d'après soit spécifique de l'élève
         
     }
     
