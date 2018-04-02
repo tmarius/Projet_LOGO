@@ -1,19 +1,17 @@
-    /**
-     * Classe interfaceListe affiche une fenêtre qui contient sur la gauche une liste des classes
-     * quand le prof sélectionne une classe, la liste des élèves de cette classe apparait sur la droite, il peut ensuite sélectionner un élève pour l'évaluer
-     * 
-     * Avec méthode qui retourne un panel correspondant à l'affichage de la vue souhaité et que l'on va ajouter dans la frame principale.
-     * 
-     */
+   
 package projet_logo.vue;
 
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 /**
- *
- * @author Lucas
- */
+     *author grp8
+     * Classe interfaceListe affiche une fenêtre qui contient sur la gauche une liste des classes
+     * quand le prof sélectionne une classe, la liste des élèves de cette classe apparait sur la droite, il peut ensuite sélectionner un élève pour l'évaluer
+     * 
+     * Avec méthode qui retourne un panel correspondant à l'affichage de la vue souhaité et que l'on va ajouter dans la frame principale.
+     * 
+     */
 public class InterfaceListeClasse {
     
    private JPanel mainPanel, panelClasses, panelEleves;

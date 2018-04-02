@@ -89,8 +89,8 @@ public class MainModel {
     try {
                 while (res.next()) //Boucle tant que l'objet n'est pas vide
                 {
-                    exercice1 = new Exercice(res.getInt("idExercice"), res.getString("scriptSolution"), res.getString("criteres"), res.getString("consigne"), res.getInt("refProf"));  //Cree un eleve avec les information de la bdd (sur une itinerance i de la boucle)
-                    liste1.ajoutExercice(exercice1);  //Ajoute l'exercice dans la liste d'exercices                             
+                    //exercice1 = new Exercice(res.getInt("idExercice"), res.getString("scriptSolution"), res.getString("criteres"), res.getString("consigne"), res.getInt("refProf"));  //Cree un eleve avec les information de la bdd (sur une itinerance i de la boucle)
+                    //liste1.ajoutExercice(exercice1);  //Ajoute l'exercice dans la liste d'exercices                             
                 }
             } catch (SQLException e) {
                 System.out.println(e.getMessage());

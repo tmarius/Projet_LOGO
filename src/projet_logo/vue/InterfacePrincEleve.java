@@ -16,9 +16,14 @@ import projet_logo.model.*;
 import projet_logo.model.Canvas;
 
 /**
- *
- * @author Lucas
- */
+     * Classe interfacePrincEleve permet d'afficher la vue principale
+     * dans cette interface, on a quatre différentes parties, une avec des boutons pour gérer la tortue
+     * une avec le modèle du dessin qu'il doit réaliser
+     * une avec le dessin en cours de réalisation, et la tortue qui bouge
+     * une avec le code qui s'affiche au fur et à mesure, synchronisé avec le dessin
+     * 
+     *  Avec méthode qui retourne un panel correspondant à l'affichage de la vue souhaité et que l'on va ajouter dans la frame principale.
+     */
 public class InterfacePrincEleve {
 
     JPanel mainPanel, moyenPanel, panelGauche, panelInteract, panelMenu, setVitesse;

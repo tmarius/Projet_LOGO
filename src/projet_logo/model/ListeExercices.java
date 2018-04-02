@@ -8,24 +8,36 @@ import java.util.ArrayList;
 
 /**
  *
- * @author morgane
+ * @author grp8
+ * Classe ListeExercices
+ * Classe composée d'une liste d'objets Exercice : listeExos
+ * Classe composée de méthodes setters et getters, et ajoutExercice.
+ * 
  */
 public class ListeExercices {
     
     private ArrayList<Exercice> listeExos;
 
-    public ListeExercices(){
-        listeExos = new ArrayList<>();
-    }
-    
+    /* getListeExos
+    Méthode retournant une liste d'exercices, étant des objets Exercice
+    @return listeExos, étant une liste d'exercices (objets Exercice)
+    */
     public ArrayList<Exercice> getListeExos() {
         return listeExos;
     }
 
+    /* setListeExos
+    Méthode modifiant la liste d'exercices par une nouvelle liste passée en paramètre.
+    @param listeExos, étant une nouvelle liste d'objets Exercice
+    */
     public void setListeExos(ArrayList<Exercice> listeExos) {
         this.listeExos = listeExos;
     }
     
+    /* ajoutExercice
+    Méthode ajoutant un objet Exercice, nommé exercice, à une liste d'objets Exercice.
+    @param exercice, étant un objet Exercice à ajouter à listeExos, une liste d'objets Exercice.
+    */
     public void ajoutExercice(Exercice exercice){
         listeExos.add(exercice);
         

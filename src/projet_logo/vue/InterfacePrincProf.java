@@ -12,13 +12,15 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Lucas
+ * @author Grp8
+ * Classe permettant la création d'une interface destinée au professeur, afin qu'il puisse créer ou modifier un exercice.
+ * Deux arbres sont placés dans l'interface : un permettant de rechercher un exercice en fonction de la difficulté, l'autre en fonction de la classe.
  */
 public class InterfacePrincProf {
     
     private JPanel panelGauche, mainPanel;
-    private TreeExo arbre, arbre2;
-    private JButton creer, modif;
+    private TreeExo arbre, arbre2; //Les 2 arbres (un recherchant en fonction de la difficulté, l'autre en fonction de la classe.
+    private JButton creer, modif; //Boutons créer exercice et modifier exercice.
             
         public InterfacePrincProf(){
         

@@ -12,7 +12,9 @@ import projet_logo.model.*;
 
 /**
  *
- * @author Lucas
+ * @author grp8
+ * ajout d'arbres. Chaque arbre possède un titre, et des sous dossiers. Dans ces derniers se trouvent différents exercices.
+ *L'utilisateur peut cliquer sur un exercice.
  */
 public class TreeExo extends JPanel
 {
@@ -26,9 +28,9 @@ public class TreeExo extends JPanel
                 e.printStackTrace();
             }   
         //créer le noeud racine
-        DefaultMutableTreeNode exo = new DefaultMutableTreeNode("Liste des exercices");
+        DefaultMutableTreeNode exo = new DefaultMutableTreeNode("Liste des exercices"); //titre ed l'arbre
         //créer les noeuds fils
-        //DefaultMutableTreeNode exercices = new DefaultMutableTreeNode(listeExos.getListeExos());
+        DefaultMutableTreeNode niv1 = new DefaultMutableTreeNode("Exercices débutants"); //sous-dossier 1
         //ajouter des sous noeuds au noeud fils
 
         //listeExos.getListeExos().forEach((exercice) -> {
@@ -36,15 +38,15 @@ public class TreeExo extends JPanel
     
         
         //niv1.add(new DefaultMutableTreeNode(exercice.getId()));
-        //niv1.add(new DefaultMutableTreeNode("Exercice 2"));
-        //niv1.add(new DefaultMutableTreeNode("Exercice 3"));
-        DefaultMutableTreeNode niv2 = new DefaultMutableTreeNode("Exercices affirmés");
+        niv1.add(new DefaultMutableTreeNode("Exercice 2"));
+        niv1.add(new DefaultMutableTreeNode("Exercice 3"));
+        DefaultMutableTreeNode niv2 = new DefaultMutableTreeNode("Exercices affirmés"); //sous-dossier 2
         //ajouter des sous noeuds au noeud fils
         niv2.add(new DefaultMutableTreeNode("Exercice 1"));
         niv2.add(new DefaultMutableTreeNode("Exercice 2"));
         niv2.add(new DefaultMutableTreeNode("Exercice 3"));
         //ajouter les noeuds fils au noeud racine
-        DefaultMutableTreeNode niv3 = new DefaultMutableTreeNode("Exercices difficiles");
+        DefaultMutableTreeNode niv3 = new DefaultMutableTreeNode("Exercices difficiles"); //sous-dossier 3
         niv3.add(new DefaultMutableTreeNode("Exercice 1"));
         niv3.add(new DefaultMutableTreeNode("Exercice 2"));
         niv3.add(new DefaultMutableTreeNode("Exercice 3"));
@@ -64,4 +66,3 @@ public class TreeExo extends JPanel
         //tree.setPreferredSize(new Dimension(100, 200));
 } 
 }
-
