@@ -6,7 +6,11 @@
 package projet_logo.vue;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import projet_logo.controler.Controler_IntPrincProf;
@@ -38,6 +42,75 @@ public class InterfacePrincProf {
         //création des boutons
         creer = new JButton("Créer Exercice");
         modif = new JButton("Modifier Exercice");
+        
+        //parmètres de base pour le design
+        Color couleurBlanche = new Color(255, 255, 255);
+        Color couleurFondBoutons = new Color(140, 140, 140);
+        Font font = new Font(Font.SERIF, Font.BOLD, 20);
+        Color SourisPasse = new Color(0, 0, 0);
+        
+        //Design des boutons
+        creer.setBackground(couleurFondBoutons);
+        creer.setForeground(couleurBlanche);
+        creer.setFont(font);
+        modif.setBackground(couleurFondBoutons);
+        modif.setForeground(couleurBlanche);
+        modif.setFont(font);
+        
+        //MouseListeners des boutons
+        creer.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Color SourisPasse = new Color(0, 0, 0);
+                creer.setBackground(SourisPasse);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                creer.setBackground(couleurFondBoutons);
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+        });
+        
+        modif.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                Color SourisPasse = new Color(0, 0, 0);
+                modif.setBackground(SourisPasse);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                modif.setBackground(couleurFondBoutons);
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+        });
         
         //création des listeners
         c1 = new Controler_IntPrincProf(frame, "creer");

@@ -25,7 +25,7 @@ public class MainWindow extends JFrame {
     private final InterfaceConnexion InCo;
     private final InterfaceOuverture InOuv;
     private final ConnexionEleve CoEleve;
-    //private final ConnexionProf CoProf;
+    private final ConnexionProf CoProf;
     private final InterfacePrincEleve PrEleve;
     private final InterfaceCreaExo CreaEx;
     private final InterfaceListeClasse ListeClasse;
@@ -43,7 +43,7 @@ public class MainWindow extends JFrame {
     InCo = new InterfaceConnexion(datas.getClasse1());
     InOuv = new InterfaceOuverture(this);
     CoEleve = new ConnexionEleve(this);
-    //CoProf = new ConnexionProf();
+    CoProf = new ConnexionProf();
     PrEleve = new InterfacePrincEleve(this);
     CreaEx = new InterfaceCreaExo(this);
     ListeClasse = new InterfaceListeClasse();
@@ -82,6 +82,10 @@ public class MainWindow extends JFrame {
 
     public ConnexionEleve getCoEleve() {
         return CoEleve;
+    }
+    
+    public ConnexionProf getCoProf() {
+        return CoProf;
     }
 
     public InterfacePrincEleve getPrEleve() {
