@@ -14,7 +14,9 @@ import projet_logo.model.Classe;
 import projet_logo.model.Eleve;
 
 /**
- * Classe permettant la création de Jtree
+ * Classe permettant la création de Jtree. Un arbre possède des noeuds et sous-noeuds
+ *
+ *@author grp8
  */
 public class TreeExample extends JPanel {
 
@@ -37,7 +39,7 @@ public class TreeExample extends JPanel {
             classe1.add(new DefaultMutableTreeNode(unEleve.getPrenom() + " " + unEleve.getNom()));
         });
 
-        DefaultMutableTreeNode classe2 = new DefaultMutableTreeNode("Classe Info"); //classe quii vient pas de la BDD
+        DefaultMutableTreeNode classe2 = new DefaultMutableTreeNode("Classe Info"); //classe qui ne vient pas de la BDD
 
         //ajouter des sous noeuds au noeud fils
         classe2.add(new DefaultMutableTreeNode("élève4"));

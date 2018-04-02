@@ -1,8 +1,4 @@
-        /**
-     * Classe interfaceOuverture créer une interface avec deux boutons, permet de choisir si on se connecte en tant que professeur ou en tant qu'élève
-     * 
-     * Avec méthode qui retourne un panel correspondant à l'affichage de la vue souhaité et que l'on va ajouter dans la frame principale
-     */
+      
 package projet_logo.vue;
 
 import java.awt.BorderLayout;
@@ -16,16 +12,18 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Lucas
- */
+  /**
+    * Classe interfaceOuverture 
+    * Permet de créer une interface avec deux boutons
+    * L'utilisateur peut choisir s'il se connecte en tant que professeur ou en tant qu'élève
+    * Avec méthode qui retourne un panel correspondant à l'affichage de la vue souhaité et que l'on va ajouter dans la frame principale
+    */
 public class InterfaceOuverture {
     
 private JPanel panel1;
 private JPanel panel2;
-private JButton prof;
-private JButton eleve;
+private JButton prof; //Bouton qui sera : "je suis un professeur"
+private JButton eleve; //Bouton qui sera : "je suis un élève"
 
     public InterfaceOuverture() {
         panel1 = new JPanel();
@@ -45,11 +43,11 @@ private JButton eleve;
         
         panel1.add(panel2, BorderLayout.SOUTH);
         
-        ImageIcon logo = new ImageIcon(getClass().getResource("/projet_logo/images/tortue_connexion.png"));
+        ImageIcon logo = new ImageIcon(getClass().getResource("/projet_logo/images/tortue_connexion.png")); //Chemin relatif
         JLabel titre = new JLabel("Apprendre la programmation en s'amusant!", JLabel.CENTER);
         titre.setVerticalTextPosition(JLabel.BOTTOM);
         titre.setHorizontalTextPosition(JLabel.CENTER);
-        titre.setIcon(logo);
+        titre.setIcon(logo); //Ajout de l'icone
         titre.setOpaque(true);
         titre.setBackground(Color.white);
         

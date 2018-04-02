@@ -1,9 +1,4 @@
-        /**
-     * Classe interfacevisuExo crée une fenêtre à partir de laquelle leprof pourra visualiser les exercices qu'il a déja créé
-     * sur la gauche on a la liste des exercices et sur la droite on peut voir le dessin et le code voulu, ainsi que les critères d'évaluation pour chaque statut
-     * 
-     * Avec méthode qui retourne un panel correspondant à l'affichage de la vue souhaité et que l'on va ajouter dans la frame principale.
-     */
+     
 package projet_logo.vue;
 
 import java.awt.BorderLayout;
@@ -15,13 +10,16 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
- *
- * @author Lucas
- */
+     *@author grp8
+     * Classe interfacevisuExo crée une fenêtre à partir de laquelle le professeur pourra visualiser les exercices qu'il a déja créé
+     * sur la gauche on a la liste des exercices et sur la droite on peut voir le dessin et le code voulu, ainsi que les critères d'évaluation pour chaque statut
+     * 
+     * Avec méthode qui retourne un panel correspondant à l'affichage de la vue souhaité et que l'on va ajouter dans la frame principale.
+     */
 public class InterfaceVisuExo {
     
     private JPanel mainPanel, centre, centreHaut;
-    private TreeExo arbre;
+    private TreeExo arbre; //arbre permettant la visualisation des exercices
 
     public InterfaceVisuExo(){
        mainPanel = new JPanel(new BorderLayout());

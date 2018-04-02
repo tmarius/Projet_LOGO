@@ -16,6 +16,8 @@ import projet_logo.model.*;
 
 /**
  * Page principale. Est une frame ayant des pannels changeant en fonction de l'interface. 
+ *Il est possible de passer d'une interface à une autre en en appelant.
+ * @author grp8
  */
 public class MainWindow extends JFrame {
     private Formulaire formulaires = new Formulaire() ;
@@ -28,6 +30,7 @@ public class MainWindow extends JFrame {
     private final InterfaceConnexion InCo;
     private final InterfaceOuverture InOuv;
     private final ConnexionEleve CoEleve;
+    private final ConnexionProf CoProf;
     private final InterfacePrincEleve PrEleve;
     private final InterfaceCreaExo CreaEx;
     private final InterfaceListeClasse ListeClasse;
@@ -44,6 +47,7 @@ public class MainWindow extends JFrame {
     InCo = new InterfaceConnexion(datas.getClasse1());
     InOuv = new InterfaceOuverture();
     CoEleve = new ConnexionEleve();
+    CoProf = new ConnexionProf();
     PrEleve = new InterfacePrincEleve();
     CreaEx = new InterfaceCreaExo();
     ListeClasse = new InterfaceListeClasse();
@@ -52,10 +56,13 @@ public class MainWindow extends JFrame {
 
     
     //Interface de test avec Jtree, Jtable ...
-    windows.add(InCo.getInterfaceConnexion()); //on commence par la première interface
+    //windows.add(InCo.getInterfaceConnexion()); //on commence par la première interface
     
     //Interface ouverture
-    //windows.add(InOuv.getInterfaceOuverture());
+    windows.add(InOuv.getInterfaceOuverture());
+    
+    //Interface Connexion Prof
+    //windows.add(CoProf.getConnexionProf());
     
     //Interface Connexion Eleve
     //windows.add(CoEleve.getConnexionEleve());
