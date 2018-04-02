@@ -66,6 +66,9 @@ public class InterfacePrincEleve {
         constAv.gridheight = 2;
         avancer = new JButton("AVANCER");
         avancer.setPreferredSize(new Dimension(130, 140));
+        avancer.setBackground(new Color(140, 140, 140));
+        avancer.setForeground(new Color(255, 255, 255));
+        avancer.setFont(new Font(Font.SERIF, Font.BOLD, 18));
         panelInteract.add(avancer, constAv);
         c1 = new Controler_InterfacePrincEleve(frame, "AVANCER");
         avancer.addActionListener(c1);
@@ -77,6 +80,9 @@ public class InterfacePrincEleve {
         constDessin.gridheight = 2;
         tracer = new JButton("TRACER");
         tracer.setPreferredSize(new Dimension(130, 140));
+        tracer.setBackground(new Color(140, 140, 140));
+        tracer.setForeground(new Color(255, 255, 255));
+        tracer.setFont(new Font(Font.SERIF, Font.BOLD, 18));
         panelInteract.add(tracer, constDessin);
         c2 = new Controler_InterfacePrincEleve(frame, "TRACER");
         tracer.addActionListener(c2);
@@ -88,6 +94,9 @@ public class InterfacePrincEleve {
         constTurn.gridheight = 2;
         tourner = new JButton("TOURNER");
         tourner.setPreferredSize(new Dimension(130, 140));
+        tourner.setBackground(new Color(140, 140, 140));
+        tourner.setForeground(new Color(255, 255, 255));
+        tourner.setFont(new Font(Font.SERIF, Font.BOLD, 18));
         panelInteract.add(tourner, constTurn);
         c3 = new Controler_InterfacePrincEleve(frame, "TOURNER");
         tourner.addActionListener(c3);
@@ -99,6 +108,7 @@ public class InterfacePrincEleve {
         constVit.gridheight = 1;
         vitesse = new JLabel("Vitesse : ");
         police = new Font("Arial", Font.BOLD, 16);
+        vitesse.setBackground(new Color(140, 140, 140));
         vitesse.setFont(police);
         panelInteract.add(vitesse, constVit); //changer le chiffre avec la vitesse effective de la tortue
 
@@ -110,6 +120,9 @@ public class InterfacePrincEleve {
         plus = new JButton("+");
         plus.setPreferredSize(new Dimension(130, 140));
         plus.setEnabled(false);
+        plus.setBackground(new Color(140, 140, 140));
+        plus.setForeground(new Color(255, 255, 255));
+        plus.setFont(new Font(Font.SERIF, Font.BOLD, 18));
         panelInteract.add(plus, constPlus);
         c4 = new Controler_InterfacePrincEleve(frame, "+");
         plus.addActionListener(c4);
@@ -121,6 +134,9 @@ public class InterfacePrincEleve {
         constMoins.gridheight = 1;
         moins = new JButton("-");
         moins.setPreferredSize(new Dimension(130, 140));
+        moins.setBackground(new Color(140, 140, 140));
+        moins.setForeground(new Color(255, 255, 255));
+        moins.setFont(new Font(Font.SERIF, Font.BOLD, 18));
         panelInteract.add(moins, constMoins);
         moins.setEnabled(false);
         c5 = new Controler_InterfacePrincEleve(frame, "-");
@@ -133,6 +149,9 @@ public class InterfacePrincEleve {
         constClass.gridheight = 2;
         tortueClassique = new JButton("Tortue classique");
         tortueClassique.setPreferredSize(new Dimension(130, 70));
+        tortueClassique.setBackground(new Color(140, 140, 140));
+        tortueClassique.setForeground(new Color(255, 255, 255));
+        tortueClassique.setFont(new Font(Font.SERIF, Font.BOLD, 15));
         panelInteract.add(tortueClassique, constClass);
         c6 = new Controler_InterfacePrincEleve(frame, "classique");
         tortueClassique.addActionListener(c6);
@@ -144,6 +163,9 @@ public class InterfacePrincEleve {
         constRap.gridheight = 2;
         tortueRapide = new JButton("Tortue Rapide");
         tortueRapide.setPreferredSize(new Dimension(130, 70));
+        tortueRapide.setBackground(new Color(140, 140, 140));
+        tortueRapide.setForeground(new Color(255, 255, 255));
+        tortueRapide.setFont(new Font(Font.SERIF, Font.BOLD, 15));
         panelInteract.add(tortueRapide, constRap);
         c7 = new Controler_InterfacePrincEleve(frame, "rapide");
         tortueRapide.addActionListener(c7);
@@ -163,6 +185,9 @@ public class InterfacePrincEleve {
 //        })
 
         tortueCouleur.setPreferredSize(new Dimension(130, 70));
+        tortueCouleur.setBackground(new Color(140, 140, 140));
+        tortueCouleur.setForeground(new Color(255, 255, 255));
+        tortueCouleur.setFont(new Font(Font.SERIF, Font.BOLD, 15));
         panelInteract.add(tortueCouleur, constCoul);
         c8 = new Controler_InterfacePrincEleve(frame, "couleur");
         tortueCouleur.addActionListener(c8);
@@ -170,23 +195,38 @@ public class InterfacePrincEleve {
         //menu de gauche
         panelMenu = new JPanel(new GridLayout(7, 0));
         retour = new JButton("RETOUR");
+        retour.setBackground(new Color(140, 140, 140));
+        retour.setForeground(new Color(255, 255, 255));
+        retour.setFont(new Font(Font.SERIF, Font.BOLD, 18));
         panelMenu.add(retour);
         c9 = new Controler_InterfacePrincEleve(frame, "RETOUR");
         retour.addActionListener(c9);
         sauvegarde = new JButton("SAUVEGARDE");
+        sauvegarde.setBackground(new Color(140, 140, 140));
+        sauvegarde.setForeground(new Color(255, 255, 255));
+        sauvegarde.setFont(new Font(Font.SERIF, Font.BOLD, 18));
         panelMenu.add(sauvegarde);
         c10 = new Controler_InterfacePrincEleve(frame, "SAUVEGARDE");
         sauvegarde.addActionListener(c10);
         recommencer = new JButton("RECOMMENCER");
+        recommencer.setBackground(new Color(140, 140, 140));
+        recommencer.setForeground(new Color(255, 255, 255));
+        recommencer.setFont(new Font(Font.SERIF, Font.BOLD, 18));
         panelMenu.add(recommencer);
         c11 = new Controler_InterfacePrincEleve(frame, "RECOMMENCER");
         recommencer.addActionListener(c11);
         panelMenu.add(new JLabel(" "));
         commencer = new JButton("COMMENCER TENTATIVE");
+        commencer.setBackground(new Color(140, 140, 140));
+        commencer.setForeground(new Color(255, 255, 255));
+        commencer.setFont(new Font(Font.SERIF, Font.BOLD, 18));
         panelMenu.add(commencer);
         c12 = new Controler_InterfacePrincEleve(frame, "COMMENCER");
         commencer.addActionListener(c12);
         annuler = new JButton("ANNULER");
+        annuler.setBackground(new Color(140, 140, 140));
+        annuler.setForeground(new Color(255, 255, 255));
+        annuler.setFont(new Font(Font.SERIF, Font.BOLD, 18));
         panelMenu.add(annuler);
         c13 = new Controler_InterfacePrincEleve(frame, "ANNULER");
         annuler.addActionListener(c13);
@@ -209,6 +249,9 @@ public class InterfacePrincEleve {
         constRev.gridwidth = 1;
         revoir = new JButton("REVOIR");
         revoir.setPreferredSize(new Dimension(100, 30));
+        revoir.setBackground(new Color(140, 140, 140));
+        revoir.setForeground(new Color(255, 255, 255));
+        revoir.setFont(new Font(Font.SERIF, Font.BOLD, 18));
         moyenPanel.add(revoir, constRev);
         c14 = new Controler_InterfacePrincEleve(frame, "REVOIR");
         revoir.addActionListener(c14);
@@ -220,6 +263,9 @@ public class InterfacePrincEleve {
         constRes.gridwidth = 1;
         resultats = new JButton("RESULTATS");
         resultats.setPreferredSize(new Dimension(100, 30));
+        resultats.setBackground(new Color(140, 140, 140));
+        resultats.setForeground(new Color(255, 255, 255));
+        resultats.setFont(new Font(Font.SERIF, Font.BOLD, 18));
         moyenPanel.add(resultats, constRes);
         c15 = new Controler_InterfacePrincEleve(frame, "RESULTATS");
         resultats.addActionListener(c15);
@@ -230,16 +276,16 @@ public class InterfacePrincEleve {
         constDessin.gridy = 0;
         constDessin.gridheight = 1;
         constDessin.gridwidth = 1;
-        //panelCanvas.setPreferredSize(new Dimension(400,400));
+        panelCanvas.setPreferredSize(new Dimension(600,600));
         moyenPanel.add(panelCanvas, constDessin);
 
         //menu image, modèle que l'élève devra reproduire en haut à droite       
-        //modèleImage = new ImageIcon(getClass().getResource("/projet_logo/images/tortue.PNG"));//taille a modifier pour que ce soit plus joli
+        modèleImage = new ImageIcon(getClass().getResource("/projet_logo/images/Modele.PNG"));
         modèle = new JLabel("modèle à reproduire");
         modèle.setVerticalTextPosition(JLabel.BOTTOM);
         modèle.setHorizontalTextPosition(JLabel.CENTER);
-        //modèle.setIcon(modèleImage);
-        modèle.setBackground(Color.WHITE);
+        modèle.setIcon(modèleImage);
+        modèle.setBackground(new Color(140, 140, 140));
         modèle.setOpaque(true);
         constImage = new GridBagConstraints();
         constImage.fill = GridBagConstraints.HORIZONTAL;

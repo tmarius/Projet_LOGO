@@ -45,9 +45,9 @@ public class MainWindow extends JFrame {
     CoEleve = new ConnexionEleve(this);
     //CoProf = new ConnexionProf();
     PrEleve = new InterfacePrincEleve(this);
-    CreaEx = new InterfaceCreaExo();
+    CreaEx = new InterfaceCreaExo(this);
     ListeClasse = new InterfaceListeClasse();
-    PrProf =  new InterfacePrincProf();
+    PrProf =  new InterfacePrincProf(this);
     VisuEx = new InterfaceVisuExo();
     results = new InterfaceResultat(this);
     

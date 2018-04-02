@@ -9,6 +9,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import projet_logo.controler.Controler_IntPrincProf;
 
 /**
  *
@@ -21,9 +22,12 @@ public class InterfacePrincProf {
     private JPanel panelGauche, mainPanel;
     private TreeExo arbre, arbre2; //Les 2 arbres (un recherchant en fonction de la difficulté, l'autre en fonction de la classe.
     private JButton creer, modif; //Boutons créer exercice et modifier exercice.
+    private MainWindow frame;
+    private Controler_IntPrincProf c1,c2;
             
-        public InterfacePrincProf(){
+        public InterfacePrincProf(MainWindow f){
         
+            frame = f;
         panelGauche = new JPanel(new GridLayout(4,0));
         mainPanel = new JPanel(new BorderLayout());
         
@@ -34,6 +38,12 @@ public class InterfacePrincProf {
         //création des boutons
         creer = new JButton("Créer Exercice");
         modif = new JButton("Modifier Exercice");
+        
+        //création des listeners
+        c1 = new Controler_IntPrincProf(frame, "creer");
+        c2 = new Controler_IntPrincProf(frame,"modifier");
+        creer.addActionListener(c1);
+        modif.addActionListener(c2);
         
         panelGauche.add(creer);
         panelGauche.add(modif);
