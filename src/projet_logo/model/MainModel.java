@@ -61,10 +61,10 @@ public class MainModel {
     try {
                 while (Result.next()) //Boucle temps que l'object n'est pas vide
                 {
-                    leseleves = new Eleve(Result.getInt("idEleve"), Result.getString("nom"),
-                    Result.getString("prenom"));  //Cree un eleve avec les information de la bdd (sur une itinerance i de la boucle)
+                    leseleves = new Eleve(Result.getInt("idEleve"), Result.getString("prenom"),Result.getString("nom"),Result.getInt("age"),Result.getBoolean("homme"));
+                     //Cree un eleve avec les information de la bdd (sur une itinerance i de la boucle)
                     classe1.ajoutEleves(leseleves);  //Ajoute l'eleve dans la liste d'eleve dans la classe                              
-//                    eleve.setSexe()=ResultatRequete.getBoolean("sexe");
+//                     eleve.setSexe()=ResultatRequete.getBoolean("sexe");
 //                    eleve.setAge()=ResultatRequete.getInt("id");
                 }
             } catch (SQLException e) {

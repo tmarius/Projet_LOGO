@@ -14,13 +14,22 @@ public class Eleve {
     private String nom;
     private String prenom;
     private int age;
+    private boolean homme;
     
-    public Eleve(int id, String nom, String prenom) {
+    /**
+     *
+     * @param id
+     * @param nom
+     * @param prenom
+     * @param age
+     * @param homme
+     */
+    public Eleve(int id, String nom, String prenom,int age, boolean homme) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        //this.age = age;
-        //this.refClasse = refClasse;
+        this.age = age;
+        this.homme= homme;
     }
     
     public int getId() {
@@ -55,7 +64,14 @@ public class Eleve {
         this.age = age;
     }
 
+    public boolean isHomme() {
+        return homme;
+    }
 
+
+    public void setHomme(boolean homme) {
+        this.homme = homme;
+    }
 
     
 }
