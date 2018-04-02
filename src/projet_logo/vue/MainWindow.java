@@ -62,10 +62,10 @@ public class MainWindow extends JFrame {
     //windows.add(InOuv.getInterfaceOuverture());
     
     //Interface Connexion Prof
-    windows.add(CoProf.getConnexionProf());
+    //windows.add(CoProf.getConnexionProf());
     
     //Interface Connexion Eleve
-    //windows.add(CoEleve.getConnexionEleve());
+    windows.add(CoEleve.getConnexionEleve());
     
     //Interface Principale Eleve
     //windows.add(PrEleve.getInterfacePrincEleve());
