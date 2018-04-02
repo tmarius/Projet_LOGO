@@ -1,8 +1,8 @@
-        /**
-     * Classe connexionEleve crée une interface ou l'élève va rentrer son nom, son prénom et sa classe pour pouvoir démarrer l'appli
-     * 
-     * Avec méthode qui retourne un panel correspondant à l'affichage de la vue souhaité et que l'on va ajouter dans la frame principale.
-     */
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package projet_logo.vue;
 
 import java.awt.BorderLayout;
@@ -20,20 +20,20 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
- *
- * @author Lucas
- */
-public class ConnexionEleve {
-
+* méthode connexionProfesseur crée une interface ou le professeur va rentrer son identifiant et son mot de passe pour pouvoir démarrer l'appli
+* @return un panel qui correspond à l'affichage et que l'on va ajouter dans la frame principale
+*/
+public class ConnexionProf{
+                
 JPanel ic;
 JPanel mainIc;
 JPanel l4;
 JPanel menuCentre;
-JLabel l3;
 JLabel image;
 JLabel l1;
 JLabel l2;
@@ -43,7 +43,7 @@ JComboBox classe;
 JTextField t2, t1;
 JLabel l5;
 
-    public ConnexionEleve(){
+    public ConnexionProf(){
                 
         ic = new JPanel();
         
@@ -60,7 +60,7 @@ JLabel l5;
         l4.setLayout(new BorderLayout());
         
         //ajout GridLayout 3 lignes et 2 colonnes
-        menuCentre = new JPanel(new GridLayout(4,3));
+        menuCentre = new JPanel(new GridLayout(3,2));
         
         //ajout du GridLayout au centre du BorderLayout
         mainIc.add(menuCentre,BorderLayout.CENTER);
@@ -82,7 +82,7 @@ JLabel l5;
         mainIc.setBackground(couleurBlanche);
         
         //adding the labels and text area
-        l1 = new JLabel("Nom :");
+        l1 = new JLabel("Identifiant :");
         //modifier taille de la police
         Font font = new Font(Font.SERIF,Font.BOLD,60);
         l1.setFont(font);
@@ -101,21 +101,15 @@ JLabel l5;
         t1.setFont(font);
         menuCentre.add(t1);
         
-        l2 = new JLabel("Prénom :");
+        l2 = new JLabel("Mot de passe :");
         //modifier taille de la police
         l2.setFont(font);
         menuCentre.add(l2);    
-        t2 = new JTextField();
+        t2 = new JPasswordField();
         //modifier taille de police dans le JTextField
         t2.setFont(font);
         menuCentre.add(t2);
         
-        l3 = new JLabel("Classe :");
-        l3.setFont(font);
-        menuCentre.add(l3);
-        classe = new JComboBox();
-        //relier à la base de données pour avoir les classes possibles
-        menuCentre.add(classe);
                 
         //ajout bouton démarrer
         b = new JButton("Démarrer");
@@ -196,8 +190,6 @@ JLabel l5;
         
     }
     
-    public JPanel getConnexionEleve(){
+    public JPanel getConnexionProf(){
                 return ic;
-}
-    
-}
+    }}
