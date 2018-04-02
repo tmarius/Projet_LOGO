@@ -28,7 +28,7 @@ public class TableDisplay extends JFrame implements ActionListener{
     private DefaultTableModel model;
 
     private JTable tableaumain;
-    private final String[] title ={"Prénom", "Nom", "Couleur favorite", "Homme"};
+    private final String[] title ={"Id", "Prénom", "Nom", "Age", "Sexe"};
     private Object[][] data;
     
 public TableDisplay(){
@@ -47,10 +47,13 @@ public JPanel createTable(Classe classetable){
      
     
     int i;
-    String[][] shades = new String[classetable.getEleves().size()][2];
+    Object[][] shades = new Object [classetable.getEleves().size()][5];
     for (i=0;i<classetable.getEleves().size();i++) 
-    { shades[i][0]= classetable.getEleve(i).getNom(); 
-      shades[i][1]= classetable.getEleve(i).getPrenom();                     
+    { shades[i][0]= classetable.getEleve(i).getId();
+      shades[i][1]= classetable.getEleve(i).getNom(); 
+      shades[i][2]= classetable.getEleve(i).getPrenom();
+      shades[i][3]= classetable.getEleve(i).getAge();
+      shades[i][4]= classetable.getEleve(i).isHomme();  
     }
         
     
