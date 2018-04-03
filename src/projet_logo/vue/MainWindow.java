@@ -43,7 +43,7 @@ public class MainWindow extends JFrame {
     InCo = new InterfaceConnexion(datas.getClasse1());
     InOuv = new InterfaceOuverture(this);
     CoEleve = new ConnexionEleve(this);
-    CoProf = new ConnexionProf();
+    CoProf = new ConnexionProf(this);
     PrEleve = new InterfacePrincEleve(this);
     CreaEx = new InterfaceCreaExo(this);
     ListeClasse = new InterfaceListeClasse();

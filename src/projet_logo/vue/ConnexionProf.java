@@ -10,8 +10,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
@@ -23,10 +21,11 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import projet_logo.controler.Controler_ConnexionProf;
 
 /**
 * méthode connexionProfesseur crée une interface ou le professeur va rentrer son identifiant et son mot de passe pour pouvoir démarrer l'appli
-* @return un panel qui correspond à l'affichage et que l'on va ajouter dans la frame principale
+* retourne un panel qui correspond à l'affichage et que l'on va ajouter dans la frame principale
 */
 public class ConnexionProf{
                 
@@ -42,9 +41,12 @@ JButton retour;
 JComboBox classe;
 JTextField t2, t1;
 JLabel l5;
+MainWindow frame;
+Controler_ConnexionProf c1,c2;
 
-    public ConnexionProf(){
+    public ConnexionProf(MainWindow f){
                 
+        frame = f;
         ic = new JPanel();
         
         mainIc = new JPanel();
@@ -125,6 +127,8 @@ JLabel l5;
         b.setBorder(BorderFactory.createMatteBorder(5, 5, 5, 5, Color.BLACK));
         //placer le bouton au sud
         mainIc.add(b,BorderLayout.SOUTH);
+        c1 = new Controler_ConnexionProf(frame,"démarrer");
+        b.addActionListener(c1);
         
         //ajout bouton retour
         retour = new JButton("Retour");
@@ -145,6 +149,8 @@ JLabel l5;
         l4.add(retour);
         //placer le bouton au nord
         l4.add(retour,BorderLayout.NORTH);
+        c2 = new Controler_ConnexionProf(frame,"retour");
+        retour.addActionListener(c2);
         
         b.addMouseListener(new MouseListener() {
 			@Override
@@ -186,8 +192,7 @@ JLabel l5;
         ic.add(l5,BorderLayout.EAST);
         ic.add(l4,BorderLayout.WEST);
         ic.add(mainIc);
-              
-        
+                  
     }
     
     public JPanel getConnexionProf(){

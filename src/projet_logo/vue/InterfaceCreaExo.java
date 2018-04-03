@@ -10,7 +10,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,6 +17,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import projet_logo.controler.Controler_IntCreaExo;
 import projet_logo.model.Canvas;
+import projet_logo.model.TortueCouleur;
+import projet_logo.model.TortueG;
+import projet_logo.model.TortueRapide;
 
 /**
      * Classe interfaceCreaExo crée une interface accessible par le professeur et qui lui permet de créer des exercices
@@ -28,15 +30,19 @@ import projet_logo.model.Canvas;
      */
 public class InterfaceCreaExo{
     
-private JPanel  mainPanel, panelGauche,panelInteract,  panelMenu, setVitesse, baniere, milieu, buttons;
+private JPanel  mainPanel, panelGauche,panelInteract,  panelMenu, baniere, milieu, buttons;
 private BorderLayout layout;
-private JButton choixCouleur,tortueCouleur,tortueRapide,tortueClassique, avancer, tourner, plus, moins, tracer;
+private JButton choixCouleur,tortueCouleur,tortueRapide,tortueClassique, avancer, tourner, plus, moins, tracer,commencer;
 private JLabel vitesse;
 private Font police;
 private JOptionPane popup;
-private Controler_IntCreaExo c1,c2,c3,c4,c5,c6,c7,c8;
+private Controler_IntCreaExo c1,c2,c3,c4,c5,c6,c7,c8,c9;
 private MainWindow frame;
 private GridBagConstraints constRev, constRes, constDessin, constImage, constCode, constAv, constTurn, constVit, constPlus, constMoins, constClass, constRap, constCoul, constCode2;
+private String tActuelle;
+private TortueG tClassique;
+private TortueCouleur tCouleur;
+private TortueRapide tRapide;
 //ajout de la tortue
 private Canvas myCanvas;
 private JPanel panelCanvas;
@@ -108,7 +114,7 @@ private JPanel panelCanvas;
         constVit.gridy = 2;
         constVit.gridwidth = 1;
         constVit.gridheight = 1;
-        vitesse = new JLabel("Vitesse : ");
+        vitesse = new JLabel("Vitesse : "); //ajouter la vitesse de la tortue
         police = new Font(Font.SERIF, Font.BOLD, 16);
         vitesse.setBackground(couleurFondBoutons);
         vitesse.setFont(police);
@@ -148,7 +154,10 @@ private JPanel panelCanvas;
         //menu de gauche
         panelMenu = new JPanel(new GridLayout(9,0));
         panelMenu.add(new JLabel(" "));
-        panelMenu.add(new JButton("COMMENCER"));
+        commencer = new JButton("COMMENCER");
+        panelMenu.add(commencer);
+        c9 = new Controler_IntCreaExo(frame, "COMMENCER");
+        commencer.addActionListener(c9);
         panelMenu.add(new 
             JButton("UNDO"));
         panelMenu.add(new 
@@ -207,7 +216,7 @@ private JPanel panelCanvas;
         tortueCouleur.addActionListener(c8);
         buttons.add(tortueCouleur);
         
-                tortueRapide = new JButton("Créer Tortue Rapide");
+        tortueRapide = new JButton("Créer Tortue Rapide");
         tortueRapide.setPreferredSize(tailleMoyenBoutons);
         tortueRapide.setBackground(couleurFondBoutons);
         tortueRapide.setForeground(couleurBlanche);
@@ -443,5 +452,49 @@ private JPanel panelCanvas;
     return mainPanel;
     }
 
-   
+        public TortueG getTortue(String t) {
+        if (t.equals("classique")) {
+            return tClassique;
+        } else if (t.equals("couleur")) {
+            return tCouleur;
+        } else if (t.equals("rapide")) {
+            return tRapide;
+        }
+        return null;
+    }
+    
+    public void creaTortueG(){
+        tClassique = new TortueG();
+        tActuelle = "classique";
+    }
+    
+    public void creaTortueR(){
+        tRapide = new TortueRapide();
+        tActuelle = "rapide";
+    }
+    
+    public void creaTortueC(){
+        tCouleur = new TortueCouleur();
+        tActuelle = "couleur";
+    }
+
+    public String gettActuelle() {
+        return tActuelle;
+    }
+
+    public TortueCouleur gettCouleur() {
+        return tCouleur;
+    }
+
+    public TortueRapide gettRapide() {
+        return tRapide;
+    }
+
+    public JButton getPlus() {
+        return plus;
+    }
+
+    public JButton getMoins() {
+        return moins;
+    }
 }

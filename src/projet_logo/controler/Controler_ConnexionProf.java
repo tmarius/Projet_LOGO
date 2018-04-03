@@ -14,12 +14,12 @@ import projet_logo.vue.*;
  *
  * @author morgane
  */
-public class Controler_InterfaceOuverture implements ActionListener {
+public class Controler_ConnexionProf implements ActionListener {
 
     private MainWindow window;
     private String button;
 
-    public Controler_InterfaceOuverture(MainWindow w, String b) {
+    public Controler_ConnexionProf(MainWindow w, String b) {
         button = b;
         window = w;
     }
@@ -27,14 +27,13 @@ public class Controler_InterfaceOuverture implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent a) {
         switch (button) {
-            case "prof":
-                window.refreshW(window.getCoProf().getConnexionProf());
+            case "démarrer":
+                window.refreshW(window.getPrProf().getInterfacePrincProf());
                 break;
-            case "eleve":
-                window.refreshW(window.getCoEleve().getConnexionEleve());
+            case "retour":
+                window.refreshW(window.getInOuv().getInterfaceOuverture());
                 break;
         }
 
     }
 }
-
