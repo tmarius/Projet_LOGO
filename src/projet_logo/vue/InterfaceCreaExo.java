@@ -114,7 +114,8 @@ private JPanel panelCanvas;
         constVit.gridy = 2;
         constVit.gridwidth = 1;
         constVit.gridheight = 1;
-        vitesse = new JLabel("Vitesse : "); //ajouter la vitesse de la tortue
+        
+        vitesse = new JLabel("Vitesse : 1"); //ajouter la vitesse de la tortue
         police = new Font(Font.SERIF, Font.BOLD, 16);
         vitesse.setBackground(couleurFondBoutons);
         vitesse.setFont(police);
@@ -492,6 +493,10 @@ private JPanel panelCanvas;
 
     public JButton getPlus() {
         return plus;
+    }
+
+    public JLabel getVitesse() {
+        return vitesse;
     }
 
     public JButton getMoins() {

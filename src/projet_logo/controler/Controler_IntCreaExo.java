@@ -28,6 +28,7 @@ public class Controler_IntCreaExo implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent a) {
+        int NVTvitesse;
 
         switch (button) {
             case "SAUVEGARDE": //on enregistre la création de l'exercice
@@ -52,24 +53,32 @@ public class Controler_IntCreaExo implements ActionListener {
                 break;
             case "+": //augmente la vitesse de la tortue de 1
                 window.getCreaEx().gettRapide().accelerer();
+                NVTvitesse = window.getCreaEx().gettRapide().getVitesse();
+                window.getCreaEx().getVitesse().setText("Vitesse : "+NVTvitesse);
                 break;
             case "-": //diminue la vitesse de la tortue de 1
                 window.getCreaEx().gettRapide().ralentir();
+                NVTvitesse = window.getCreaEx().gettRapide().getVitesse();
+                window.getCreaEx().getVitesse().setText("Vitesse : "+NVTvitesse);
                 break;
             case "classique": //démarre une tortue classique
                 window.getCreaEx().creaTortueG();
                 window.getCreaEx().getMoins().setEnabled(false);
                 window.getCreaEx().getPlus().setEnabled(false);
+                window.getCreaEx().getVitesse().setText("Vitesse : 1");
                 break;
             case "rapide": //démarre une tortue rapide (on peut changer sa vitesse)
                 window.getCreaEx().getMoins().setEnabled(true);
                 window.getCreaEx().getPlus().setEnabled(true);
                 window.getCreaEx().creaTortueR();
+                NVTvitesse = window.getCreaEx().gettRapide().getVitesse();
+                window.getCreaEx().getVitesse().setText("Vitesse : "+NVTvitesse);
                 break;
             case "couleur": //démarre une tortue dont on peut changer la couleur
                 window.getCreaEx().creaTortueC();
                 window.getCreaEx().getMoins().setEnabled(false);
                 window.getCreaEx().getPlus().setEnabled(false);
+                window.getCreaEx().getVitesse().setText("Vitesse : 1");
                 break;
             case "RETOUR": //ramène à l'écran précédent (ici de connexion mais manque une fenêtre de choix d'exercice)
                 window.refreshW(window.getCoProf().getConnexionProf());
